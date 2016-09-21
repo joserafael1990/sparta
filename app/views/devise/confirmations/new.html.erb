@@ -1,0 +1,27 @@
+ <div class="col-sm-offset-4 col-sm-10">
+ 	<h2>Reenviar instrucciones de confirmación</h2> <br>
+ </div>
+
+ <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+ <%= devise_error_messages! %>
+
+ <div class="row">
+ 	<div class="col-md-6 col-md-offset-3">
+ 		<div class="form-horizontal">
+ 			<div class="form-group">
+ 				<%= f.label 'Correo', class: "col-sm-2 control-label" %>
+ 				<div class="col-sm-10">
+ 					<%= f.email_field :email, autofocus: true, class: "form-control", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+ 				</div>
+ 			</div>
+ 			<div class="form-group">
+ 				<div class="col-sm-offset-4 col-sm-10">
+ 					<%= f.submit "Resenviar" %>
+ 				</div>
+ 			</div>
+ 		</div>
+ 	</div>
+ </div>
+ <% end %>
+
+ <%= render "devise/shared/links" %>

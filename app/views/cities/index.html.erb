@@ -1,0 +1,33 @@
+<%=render 'layouts/admin'%>
+<div class="col-xs-6 col-sm-4">
+	<br>
+		<h2>Ciudades</h2> <br>
+		<table width="300">
+			<tr>
+				<th>Nombre</th>
+				<th>Estado</th>
+				<th colspan="2">Acciones</th>
+			</tr>
+
+			<% @cities.each do |city|%>
+			<tr>
+				<td><%=city.name %></td>
+				<td><%=city.state.name %></td>
+				<td><%= link_to raw('<span class="glyphicon glyphicon-eye-open fa-2x"></span>'), city_path(city) %></td>
+				<td><%= link_to raw('<span class="glyphicon glyphicon-edit fa-2x"></span>'), edit_city_path(city) %></td>
+				<td><%= link_to raw('<span class="glyphicon glyphicon-trash fa-2x"></span>'), city_path(city), method: :delete, data: { confirm: '¿Está seguro?'} %></td>
+			</tr>
+			<% end %>
+		</table>
+		<br><br>
+		<%= link_to 'Nuevo ciudad', new_city_path, {:class=>"btn btn-link"} %>
+	
+</div>
+<div class="col-xs-6 col-sm-4">
+	<br>
+	<br>
+	<br><br>
+	<br>
+	<br>
+	<%= link_to 'Nueva ciudad', new_city_path, {:class=>"btn btn-link"} %>
+</div>

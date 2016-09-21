@@ -1,0 +1,17 @@
+<%=render 'layouts/admin'%>
+
+<div class="col-xs-12 col-sm-6 col-md-8">
+	<br>
+	<h2>Ver ciudad</h2> 
+	<p>
+		<strong>Estado:</strong>
+		<%= @city.state.name%>
+	</p>
+	<p>
+		<strong>Nombre:</strong>
+		<%= @city.name%>
+	</p>
+	<p>
+		<%= link_to 'Atrás', cities_path, {:class=>"btn btn-link"} %> | <%= link_to 'Editar', edit_city_path(@city), {:class=>"btn btn-link"} %>
+	</p>
+</div>

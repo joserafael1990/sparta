@@ -1,0 +1,27 @@
+ <div class="col-sm-offset-4 col-sm-10">
+  <h2>Reenviar las instrucciones de desbloqueo</h2> <br>
+</div>
+
+<%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
+  <%= devise_error_messages! %>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="form-horizontal">
+      <div class="form-group">
+        <%= f.label 'Correo', class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+          <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: 'Ingrese su correo' %>
+        </div>
+      </div>
+  </div>
+
+<div class="form-group">
+        <div class="col-sm-offset-4 col-sm-10">
+          <%= f.submit "Reenviar instrucciones", class: "btn btn-primary btn-lg"  %>
+        </div>
+      </div>
+    </div>
+<% end %>
+
+<%= render "devise/shared/links" %>

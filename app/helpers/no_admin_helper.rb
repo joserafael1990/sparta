@@ -1,0 +1,2 @@
+module NoAdminHelper
+end
