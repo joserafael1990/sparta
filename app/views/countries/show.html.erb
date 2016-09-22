@@ -1,0 +1,15 @@
+<%=render 'layouts/admin'%>
+
+<div class="col-xs-12 col-sm-6 col-md-8">
+	<br>
+	<h2>Ver país</h2> 
+	<p>
+		<strong>Nombre:   </strong>
+		<% @armar =  '/assets/flags/'+ @country.name %>
+		<%=image_tag(@armar)%> <%=  @country.name %>
+	</p>
+	<p>
+		<%= link_to 'Atrás', countries_path , {:class=>"btn btn-link"}%> | <%= link_to 'Editar', edit_country_path(@country), {:class=>"btn btn-link"} %>
+	</p>
+</div>
+

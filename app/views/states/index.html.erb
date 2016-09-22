@@ -5,12 +5,15 @@
 		<table width="300">
 			<tr>
 				<th>Nombre</th>
+				<th>País</th>
 				<th colspan="2">Acciones</th>
 			</tr>
 
 			<% @states.each do |state|%>
 			<tr>
+				<% @armar =  '/assets/flags/'+ state.country.name %>
 				<td><%=state.name %></td>
+				<td style="white-space: nowrap" > <%= image_tag(@armar)%> <%= state.country.name %></td>
 				<td><%= link_to raw('<span class="glyphicon glyphicon-eye-open fa-2x"></span>'), state_path(state) %></td>
 				<td><%= link_to raw('<span class="glyphicon glyphicon-edit fa-2x"></span>'), edit_state_path(state) %></td>
 				<td><%= link_to raw('<span class="glyphicon glyphicon-trash fa-2x"></span>'), state_path(state), method: :delete, data: { confirm: '¿Está seguro?'} %></td>

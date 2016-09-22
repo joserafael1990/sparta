@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<%= favicon_link_tag 'favicon.ico' %>
 	<title>Sparta</title>
 	<%= csrf_meta_tags %>
 
@@ -22,7 +23,7 @@
 				<% else %>
 				<ul class="nav navbar-nav navbar-right" >
 					<li><a href="signup">Registrarse</a></li>
-					<li><a href="login" class="label label-success">Iniciar sesión</a></li>
+					<li><a href="login" >Iniciar sesión</a></li>
 				</ul>
 				<% end %>
 			</div>

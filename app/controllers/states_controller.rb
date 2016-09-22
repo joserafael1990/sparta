@@ -47,6 +47,6 @@
 
  	protected
  	def state_params
- 		params.require(:state).permit(:name)
+ 		params.require(:state).permit(:name, :country_id)
  	end
  end

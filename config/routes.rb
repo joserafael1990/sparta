@@ -1,16 +1,13 @@
 Rails.application.routes.draw do
 
-  get 'cities/index'
-
-  get 'cities/show'
-
-  get 'cities/destroy'
 
   resources :admin  
   resources :categories
+  resources :cities
+  resources :countries
   resources :no_admin
   resources :states
-  resources :cities
+
 
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

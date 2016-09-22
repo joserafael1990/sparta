@@ -1,0 +1,32 @@
+<%=render 'layouts/admin'%>
+<div class="col-xs-6 col-sm-4">
+	<br>
+		<h2>Países</h2> <br>
+		<table width="300">
+			<tr>
+				<th>Nombre</th>
+				<th colspan="2">Acciones</th>
+			</tr>
+
+			<% @countries.each do |country|%>
+			<tr>
+				<% @armar =  '/assets/flags/'+ country.name %>
+				<td> <%= image_tag(@armar)%> <%= country.name %></td>
+				<td><%= link_to raw('<span class="glyphicon glyphicon-eye-open fa-2x"></span>'), country_path(country) %></td>
+				<td><%= link_to raw('<span class="glyphicon glyphicon-edit fa-2x"></span>'), edit_country_path(country) %></td>
+				<td><%= link_to raw('<span class="glyphicon glyphicon-trash fa-2x"></span>'), country_path(country), method: :delete, data: { confirm: '¿Está seguro?'} %></td>
+			</tr>
+			<% end %>
+		</table>
+		<br><br>
+		<%= link_to 'Nuevo país', new_country_path, {:class=>"btn btn-link"} %>
+</div>
+
+<div class="col-xs-6 col-sm-4">
+	<br>
+	<br>
+	<br><br>
+	<br>
+	<br>
+	<%= link_to 'Nuevo país', new_country_path, {:class=>"btn btn-link"} %>
+</div>
