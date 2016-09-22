@@ -17,6 +17,19 @@
  		redirect_to states_path
  	end
 
+ 	def find_states_given_country_id
+	   country_id = params[:country_id]#utilizes the url to extract school_id ".../find_states_given_school_id?school_id=123123"
+	   puts "THIS IS MY Country ID :: #{country_id}"#view this in teminal
+
+	   states = State.search_for_country_id(country_id).as_json#query the model for the data and convert it to a hash using as_json
+	   puts "THESE ARE MY states IN A HASH :: #{states}"
+	   respond_to do |format|
+	        format.json { 
+	            render json: states
+	        } 
+	   end
+	end
+
  	def edit
  		@state = State.find(params[:id])
  	end
