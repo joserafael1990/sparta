@@ -3,9 +3,7 @@
 one:
   name: MyString
   state: one
-  country: one
 
 two:
   name: MyString
   state: two
-  country: two

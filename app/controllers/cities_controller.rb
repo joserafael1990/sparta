@@ -1,4 +1,6 @@
 class CitiesController < ApplicationController
+	before_action :authenticate_user!, except:  [:show, :index]
+	before_action :set_city, except: [:index, :new, :create]
 
 	def create
 		@city = City.new(city_params)
@@ -11,30 +13,31 @@ class CitiesController < ApplicationController
 	end
 
 	def destroy
-		@city = City.find(params[:id])
 		@city.destroy
 		redirect_to cities_path
 	end
 
 	def edit
-		@city = City.find(params[:id])
 	end
 
 	def index
-		@cities = City.order(:name)
+		@search = City.ransack(params[:q])
+		@cities = @search.result.page(params[:page]).per(20)
 	end
+
 
 	def new
 		@city = City.new
 	end
 
-	def show
+	def set_city
 		@city = City.find(params[:id])
 	end
 
-	def update
-		@city = City.find(params[:id])
+	def show
+	end
 
+	def update
 		if @city.update(city_params)
 			redirect_to @city
 		else
@@ -43,8 +46,8 @@ class CitiesController < ApplicationController
 	end
 
 	protected
-	def city_params
-		params.require(:city).permit(:name, :state_id, :country_id)
-	end
+		def city_params
+			params.require(:city).permit(:name, :state_id, :country_id)
+		end
 
 end

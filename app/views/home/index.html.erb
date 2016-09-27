@@ -1,19 +1,7 @@
-	<div class="jumbotron text-center">
-		<h1>Giveit</h1> 
-		<p>Lo que ya no necesitas, de seguro le sirve a alguien</p><br> 	
-		<!--_hay que meterle esto por dentro al form_tag  -->
-		<!--_items_path, class: 'form-inline', :method => 'get' do  -->
-		<div class="row">
-			<div class="col-md-2"></div>
-			<div class="col-md-8">
-				<%= form_tag %>
-				<div class="input-group">
-					<%= text_field_tag :search, params[:search], class: "form-control", placeholder: 'Buscar algo' %>	
-					<span class="input-group-btn">
-						<%= submit_tag 'Buscar', class: 'btn btn-danger' %>
-					</span>
-				</div>
-			</div>	
-		</div>
-		<div class="col-md-2"></div>
-	</div>
+	<% if user_signed_in? %>
+		<% if current_user.admin == true %>
+			<%= render 'layouts/admin' %>
+		<% else %>
+			<%= render 'layouts/no_admin' %>
+		<% end %>
+	<% end %> 

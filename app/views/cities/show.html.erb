@@ -4,12 +4,16 @@
 	<br>
 	<h2>Ver ciudad</h2> 
 	<p>
+		<strong>Nombre:</strong>
+		<%= @city.name%>
+	</p>
+	<p>
 		<strong>Estado:</strong>
 		<%= @city.state.name%>
 	</p>
-	<p>
-		<strong>Nombre:</strong>
-		<%= @city.name%>
+		<p>
+	<strong>País:</strong>
+		<%= @city.state.country.name%>
 	</p>
 	<p>
 		<%= link_to 'Atrás', cities_path, {:class=>"btn btn-link"} %> | <%= link_to 'Editar', edit_city_path(@city), {:class=>"btn btn-link"} %>

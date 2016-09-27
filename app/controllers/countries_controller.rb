@@ -1,4 +1,6 @@
-class CountriesController < ApplicationController
+ class CountriesController < ApplicationController
+	before_action :authenticate_user!, except:  [:show, :index]
+	before_action :set_country, except: [:index, :new]
  	
  	def create
  		@country = Country.new(country_params)
@@ -11,31 +13,30 @@ class CountriesController < ApplicationController
  	end
 
  	def destroy
- 		@country = Country.find(params[:id])
  		@country.destroy	
-
  		redirect_to countries_path
  	end
 
  	def edit
- 		@country = Country.find(params[:id])
  	end
 
  	def index
- 		@countries = Country.order(:name)
+		@search = Country.ransack(params[:q])
+		@countries = @search.result.page(params[:page]).per(20).order(:name)
  	end
 
  	def new
  		@country = Country.new
  	end
 
+ 	def set_country
+		@country = Country.find(params[:id])
+ 	end
+
  	def show
- 		@country = Country.find(params[:id])
  	end
 
  	def update
- 		@country = Country.find(params[:id])
-
  		if @country.update(country_params)
  			redirect_to @country
  		else

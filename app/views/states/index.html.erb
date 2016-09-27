@@ -1,8 +1,10 @@
 <%=render 'layouts/admin'%>
-<div class="col-xs-6 col-sm-4">
+<div class="col-xs-7 col-sm-5">
 	<br>
 		<h2>Estados</h2> <br>
-		<table width="300">
+		<%= render 'search' %>
+
+		<table style= "width: 100%;">
 			<tr>
 				<th>Nombre</th>
 				<th>País</th>
@@ -21,14 +23,10 @@
 			<% end %>
 		</table>
 		<br><br>
-		<%= link_to 'Nuevo estado', new_state_path, {:class=>"btn btn-link"} %>
+		<%= link_to 'Nuevo estado', new_state_path, {:class=>"btn btn-info"} %>
+		<p><%= paginate @states %></p>
 	
 </div>
-<div class="col-xs-6 col-sm-4">
-	<br>
-	<br>
-	<br><br>
-	<br>
-	<br>
-	<%= link_to 'Nuevo estado', new_state_path, {:class=>"btn btn-link"} %>
+<div class="col-xs-5 col-sm-3" id='right_new_item'>
+	<%= link_to 'Nuevo estado', new_state_path, {:class=>"btn btn-info"} %>
 </div>

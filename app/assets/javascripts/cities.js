@@ -1,6 +1,6 @@
 console.log('loaded states.js')//check that the file is loaded
 
-$(document).on('change','#city_country_id', function () {//change states when user changes country
+$(document).on('change','#country_list', function () {//change states when user changes country
  load_states_from_country_dropdown();
 });
 
@@ -8,8 +8,8 @@ $(document).ready(load_states_from_country_dropdown);//populate majors when page
 
 function load_states_from_country_dropdown(){
     var request = "/states/find_states_given_country_id?country_id=" //access controller of interest
-    + $('#city_country_id').val();
-    if(  !isNaN(parseFloat($('#city_country_id').val() ))){
+    + $('#country_list').val();
+    if(  !isNaN(parseFloat($('#country_list').val() ))){
         var aj = $.ajax({
             url: request,
             type: 'get',

@@ -1,0 +1,6 @@
+<%= search_form_for @search do |f| %>	
+	<div class="form-group">		
+		<%= f.text_field :name_cont, autofocus: true, placeholder: 'Ingrese ciudad' %>
+		<%= f.submit 'Buscar', class: "btn btn-link"  %>
+	</div>
+<% end %>

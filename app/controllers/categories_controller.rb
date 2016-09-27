@@ -1,4 +1,7 @@
 class CategoriesController < ApplicationController
+  before_action :authenticate_user!, except:  [:show, :index]
+  before_action :set_category, except: [:index, :new]
+
   def create
     @category = Category.new(category_params)
 
@@ -10,30 +13,30 @@ class CategoriesController < ApplicationController
   end
 
   def destroy
-    @category = Category.find(params[:id])
     @category.destroy
     redirect_to categories_path
   end
 
   def edit
-    @category = Category.find(params[:id])
   end
 
   def index
-    @categories = Category.order(:name)
+    @search = Category.ransack(params[:q])
+    @categories = @search.result.page(params[:page]).per(20).order(:name)
   end
   
   def new
     @category = Category.new
   end
 
-  def show
+  def set_category
     @category = Category.find(params[:id])
   end
 
-  def update
-    @category = Category.find(params[:id])
+  def show
+  end
 
+  def update
     if @category.update(category_params)
         redirect_to @category
     else

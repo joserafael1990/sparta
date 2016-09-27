@@ -17,8 +17,6 @@
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="profile"><span class="glyphicon glyphicon-user"></span> Editar usuario</a></li>
 					<li> <%= link_to raw('Cerrar sesión <span class="glyphicon glyphicon-off"></span>'), destroy_user_session_path, :method => :delete %></li>
-
-					
 				</ul>
 				<% else %>
 				<ul class="nav navbar-nav navbar-right" >
