@@ -1,0 +1,21 @@
+<%=render 'layouts/admin'%>
+
+<div class="col-xs-12 col-sm-6 col-md-8">
+	<br>
+	<h2>Ver persona</h2> 
+	<p>
+		<strong>Nombre:</strong>
+		<%= @person.name%>
+	</p>
+	<p>
+		<strong>Estado:</strong>
+		<%= @person.state.name%>
+	</p>
+		<p>
+	<strong>País:</strong>
+		<%= @person.state.country.name%>
+	</p>
+	<p>
+		<%= link_to 'Atrás', people_path, {:class=>"btn btn-link"} %> | <%= link_to 'Editar', edit_person_path(@city), {:class=>"btn btn-link"} %>
+	</p>
+</div>

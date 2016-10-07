@@ -1,0 +1,110 @@
+<% javascript 'people' %>
+
+<%= form_for @person  do |f| %>
+<% if @person.errors.any? %>
+<div id="error_explanation">
+	<h2>
+		<%= pluralize(@person.errors.count, "error") %> No se puede guardar el estado:
+	</h2>
+	<ul>
+		<% @person.errors.full_messages.each do |msg| %>
+		<li><%= msg %></li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
+<div class="row">
+	<div class="col-xs-4 col-sm-7">
+		<div class="form-horizontal" >
+			<div class="form-group">
+				<%= f.label 'Nombres',  class: "col-sm-2 control-label" %>
+				<div class="col-sm-8">
+					<%= f.text_field :name, autofocus: true, class: "form-control", placeholder: 'Ingrese nombres'  %>
+				</div>
+			</div>
+			<div class="form-group">
+				<%= f.label 'Apellidos',  class: "col-sm-2 control-label" %>
+				<div class="col-sm-8">
+					<%= f.text_field :last_name, autofocus: true, class: "form-control", placeholder: 'Ingrese apellidos'  %>
+				</div>
+			</div>
+			<div class="form-group">
+				<%= f.label 'Email',  class: "col-sm-2 control-label", style: "text-align: left;"  %>
+				<div class="col-sm-8">
+					<%= f.email_field :email, autofocus: true, class: "form-control", placeholder: 'Ingrese email'  %>
+				</div>
+			</div>
+			<div class="form-group">
+				<%= f.label 'Sexo',  class: "col-sm-2 control-label", style: "text-align: left;" %>
+				<div class="col-sm-8" style='padding-top: 5px;'>
+					<div class="col-sm-5">
+						<%= f.radio_button :sex, 'Femenino' %> Femenino
+					</div>
+					<div class="col-sm-5">
+						<%= f.radio_button :sex, 'Masculino' %> Masculino
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<%= f.label 'Ocupación',  class: "col-sm-2 control-label", style: "text-align: left;" %>
+				<div class="col-sm-8">
+					<%= f.select :job_title, 
+								{ "Naturópata" => "Naturópata", "Nutricionista" => "Nutricionista", "Médico" => "Médico", "Terapeuta" => "Terapeuta", "Psicólogo" => "Psicólogo", "Otro" => "Otro" }, {include_blank: 'Seleccione una profesión '}, { :class => 'form-control' } %>
+				</div>
+			</div>
+			<div class="form-group" >
+				<%= f.label 'Fecha de nacimiento',  class: "col-sm-2 control-label", style: "text-align: left;" %>
+				<div class="col-sm-8" style='padding-top: 5px;'>
+					<%= f.date_field :birth_date, autofocus: true, class: "form-control"%>
+				</div>
+			</div>
+			<div class="form-group">
+				<%= f.label 'Dirección', class: "col-sm-2 control-label", style: "text-align: left;"  %>
+				<div class="col-sm-8">
+					<%= f.text_field :address, autofocus: true, class: "form-control", placeholder: 'Ingrese dirección'  %>
+				</div>
+			</div>
+			<div class="form-group">
+				<%= f.label 'País', class: "col-sm-2 control-label", style: "text-align: left;"  %>
+				<div class="col-sm-8">
+					<%= f.collection_select(:country, Country.order(:name), :id, :name, {include_blank: 'Seleccione un país'},  class: "form-control", id: 'countries_list' ) %>
+				</div>
+			</div>
+			<div class="form-group">
+				<%= f.label 'Estado', class: "col-sm-2 control-label", style: "text-align: left;"  %>
+				<div class="col-sm-8">
+					<%= f.collection_select(:state, [], :id, :name, {prompt: "Seleccione el estado"},  class: "form-control", id: 'states_list'  ) %>
+				</div>
+			</div>
+			<div class="form-group">
+				<%= f.label 'Ciudad', class: "col-sm-2 control-label", style: "text-align: left;"  %>
+				<div class="col-sm-8">
+					<%= f.collection_select(:city_id, [], :id, :name, {prompt: "Seleccione una ciudad"},  class: "form-control", id: 'cities_list'  ) %>
+				</div>
+			</div>
+			<div class="form-group">
+				<%= f.label 'Delegación',  class: "col-sm-2 control-label", style: "text-align: left;" %>
+				<div class="col-sm-8">
+					<%= f.text_field :delagation, autofocus: true, class: "form-control", placeholder: 'Ingrese el nombre de la delegación'  %>
+				</div>
+			</div>
+			<div class="form-group">
+				<%= f.label 'Rol',  class: "col-sm-2 control-label", style: "text-align: center; padding-top: 40px;" %>
+				<div class="col-sm-8">
+					Seleccione los que apliquen <br>
+					<%= f.check_box :student %> Alumno <br>
+					<%= f.check_box :employee %> Empleado <br>
+					<%= f.check_box :instructor %> Instructor <br>
+					<%= f.check_box :host %> Organizador <br>
+					<%= f.check_box :patient %> Paciente
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-offset-4 col-sm-10">
+					<%= f.submit "Enviar", class: "btn btn-primary btn-lg"  %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<% end %>
