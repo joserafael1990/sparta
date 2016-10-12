@@ -3,7 +3,7 @@ class PeopleController < ApplicationController
 	before_action :set_person, except: [:index, :new, :create]
 
 	def create
-		@person = Person.new(Person_params)
+		@person = Person.new(person_params)
 
 		if @person.save
 			redirect_to @person
@@ -46,8 +46,8 @@ class PeopleController < ApplicationController
 	end
 
 	protected
-		def Person_params
-			params.require(:Person).permit(:name, :last_name, :sex, :birth_date, :address, :job_description, :state_id, :country_id)
+		def person_params
+			params.require(:person).permit(:name, :last_name, :email, :sex, :job_title, :birth_date, :phone, :address, :delegation, :city_id, :state_id, :country_id, :employee, :instructor, :host, :patient, :student)
 		end
 
 end

@@ -4,7 +4,6 @@ $(document).on('change','#country_list', function () {//change states when user 
    load_states_from_country_dropdown();
 });
 
-
 function load_states_from_country_dropdown(){
     var request = "/states/find_states_given_country_id?country_id=" //access controller of interest
     + $('#country_list').val();
@@ -30,3 +29,4 @@ function change_states(data) {
             );
     }
 };
+

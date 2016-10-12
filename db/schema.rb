@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161006203649) do
+ActiveRecord::Schema.define(version: 20161011160855) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,14 +41,15 @@ ActiveRecord::Schema.define(version: 20161006203649) do
     t.date     "birth_date"
     t.string   "sex"
     t.string   "email"
+    t.integer  "phone"
     t.string   "job_title"
     t.text     "address"
-    t.string   "delagation"
-    t.boolean  "employee"
-    t.boolean  "patient"
-    t.boolean  "student"
-    t.boolean  "instructor"
-    t.boolean  "host"
+    t.string   "delegation"
+    t.integer  "employee"
+    t.integer  "patient"
+    t.integer  "student"
+    t.integer  "instructor"
+    t.integer  "host"
     t.integer  "city_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -82,6 +83,5 @@ ActiveRecord::Schema.define(version: 20161006203649) do
   end
 
   add_foreign_key "cities", "states"
-  add_foreign_key "people", "cities"
   add_foreign_key "states", "countries"
 end

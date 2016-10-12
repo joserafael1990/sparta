@@ -1,43 +1,41 @@
 <%=render 'layouts/admin'%>
-<div class="col-xs-7 col-sm-5">
+<div class="col-xs-12 col-sm-8">
 	<br>
 	<h2>Personas</h2> <br>
 	<%= render 'search' %>
 
 
+
 	<table style= "width: 100%;">
-		<tr>
-			<th>Nombre</th>
-			<th>Apellido</th>
-			<th >País</th>
-			<th >Estado</th>
-			<th >Ciudad</th>
-			<th colspan="2">Acciones</th>
-		</tr>
-
-		<% @people.each do |person|%>
-		<tr>
-			<td><%= link_to person.name, person_path(person) %></td>
-			<td><%= link_to person.last_name %></td>
-			<% @armar =  '/assets/flags/'+ person.city.state.country.name %>
-			<td><%= image_tag(@armar)%>  <%= person.state.country.name %></td>
-			<td><%=person.city.state.name %></td>
-			<td><%=person.city.name %></td>
-			<td><%= link_to raw('<span class="glyphicon glyphicon-eye-open fa-2x"></span>'), person_path(person) %></td>
-			<td><%= link_to raw('<span class="glyphicon glyphicon-edit fa-2x"></span>'), edit_person_path(person) %></td>
-			<td><%= link_to raw('<span class="glyphicon glyphicon-trash fa-2x"></span>'), person_path(person), method: :delete, data: { confirm: '¿Está seguro?'} %></td>
-		</tr>
-		<% end %>
-	</table>
-	<br><br>
-	<%= link_to 'Nueva persona', new_person_path, {:class=>"btn btn-info"} %>
-	<p><%= paginate @people %></p>
-
-	
-</div>
+			<tr>
+				<th>Nombre</th>
+				<th>Email</th>
+				<th>Teléfono</th>
+				<th>Ubicación</th>
+				<th colspan="2">Acciones</th>
+			</tr>
+			<br>
+			<% @people.each do |person|%>
+			<tr>
+				<td><%= link_to person.name+ ' ' +person.last_name, person_path(person) %></td>
+				<td><%= person.email %></td>
+				<% @armar =  '/assets/flags/'+ person.city.state.country.name %>
+				<td> <%= person.phone %></td>
+				<td> <%= image_tag(@armar)%> <%= person.city.name+'-'+person.city.state.name %></td>
+				<td><%= link_to raw('<span class="glyphicon glyphicon-eye-open fa-2x"></span>'), person_path(person) %></td>
+				<td><%= link_to raw('<span class="glyphicon glyphicon-edit fa-2x"></span>'), edit_person_path(person) %></td>
+				<td><%= link_to raw('<span class="glyphicon glyphicon-trash fa-2x"></span>'), person_path(person), method: :delete, data: { confirm: '¿Está seguro?'} %></td>
+			</tr>
+			<% end %>
+		</table>
+		<br><br>
+		<p><%= paginate @people %></p>
 
 
-<div class="col-xs-5 col-sm-3" id='right_new_item'>
-	<%= link_to 'Nueva persona', new_person_path, {:class=>"btn btn-info"} %>
-</div>
+	</div>
 
+
+<!-- 	<div class="col-xs-5 col-sm-3" id='right_new_item'>
+		<%= link_to 'Nueva persona', new_person_path, {:class=>"btn btn-info"} %>
+	</div>
+ -->

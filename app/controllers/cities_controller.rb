@@ -34,7 +34,7 @@ class CitiesController < ApplicationController
 
 	def index
 		@search = City.ransack(params[:q])
-		@cities = @search.result.page(params[:page]).per(20)
+		@cities = @search.result.page(params[:page]).per(20).order(:name)
 	end
 
 	def new

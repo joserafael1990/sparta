@@ -18,13 +18,15 @@
 			<div class="form-group">
 				<%= f.label 'País', class: "col-sm-2 control-label"  %>
 				<div class="col-sm-10">
-					<%= f.collection_select(:country, Country.order(:name), :id, :name, {include_blank: 'Seleccione un país'},  class: "form-control", id: 'country_list' ) %>
+					<%= f.collection_select :country, Country.order(:name) , :id, :name, {prompt: "Seleccione el país"},  class: "form-control", id: 'country_list'  if @city.new_record? %>
+					<%= f.collection_select :country, Country.order(:name), :id, :name,  {:prompt => @select_value, :selected => @city.state.country_id.to_i},  class: "form-control", id: 'country_list'  if @city.persisted? %>
 				</div>
 			</div>
 			<div class="form-group">
 				<%= f.label 'Estado', class: "col-sm-2 control-label"  %>
 				<div class="col-sm-10">
-					<%= f.collection_select(:state_id, [], :id, :name, {prompt: "Seleccione el estado"},  class: "form-control", id: 'state_list' ) %>
+					<%= f.collection_select :state_id, [] , :id, :name, {prompt: "Seleccione el estado"},  class: "form-control", id: 'state_list'  if @city.new_record? %>
+					<%= f.collection_select :state_id, State.where(:country => @city.state.country_id).order(:name), :id, :name, {:prompt => @select_value, :selected => @city.state.id.to_i},  class: "form-control", id: 'state_list'  if @city.persisted? %>
 				</div>
 			</div>
 			<div class="form-group">

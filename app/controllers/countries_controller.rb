@@ -1,6 +1,6 @@
  class CountriesController < ApplicationController
 	before_action :authenticate_user!, except:  [:show, :index]
-	before_action :set_country, except: [:index, :new]
+	before_action :set_country, except: [:index, :new, :create]
  	
  	def create
  		@country = Country.new(country_params)

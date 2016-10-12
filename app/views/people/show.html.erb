@@ -1,21 +1,93 @@
 <%=render 'layouts/admin'%>
 
-<div class="col-xs-12 col-sm-6 col-md-8">
+<div class="col-xs-12 col-sm-8">
 	<br>
 	<h2>Ver persona</h2> 
 	<p>
-		<strong>Nombre:</strong>
-		<%= @person.name%>
+		<div class="col-xs-12 col-sm-4 col-md-4">
+			<strong>Nombre:</strong>
+			<%= @person.name %>
+		</div>
+		<div class="col-xs-12 col-sm-4 col-md-4">
+			<strong>Apellido:</strong>
+			<%= @person.last_name %>
+		</div>
 	</p>
 	<p>
-		<strong>Estado:</strong>
-		<%= @person.state.name%>
-	</p>
-		<p>
-	<strong>País:</strong>
-		<%= @person.state.country.name%>
+		<br>
+		<div class="col-xs-12 col-sm-6 col-md-4">
+			<strong>Sexo:</strong>
+			<%= @person.sex %>
+		</div>
+		<div class="col-xs-12 col-sm-6 col-md-4">
+			<strong>Fecha de nacimiento:</strong>
+			<%= @person.birth_date %>
+		</div>
+		<div class="col-xs-12 col-sm-6 col-md-4">
+			<strong>Profesión:</strong>
+			<%= @person.job_title %>
+		</div>
 	</p>
 	<p>
-		<%= link_to 'Atrás', people_path, {:class=>"btn btn-link"} %> | <%= link_to 'Editar', edit_person_path(@city), {:class=>"btn btn-link"} %>
+		<br>
+		<div class="col-xs-12 col-sm-6 col-md-4">
+			<strong>Teléfono:</strong>
+			<%= @person.phone %>
+		</div>
+		<div class="col-xs-12 col-sm-6 col-md-6">
+			<strong>Correo electrónico:</strong>
+			<%= @person.email %>
+		</div>
+	</p>
+	<p>
+		<br>
+		<div class="col-xs-12 col-sm-6 col-md-6">
+			<strong>Dirección:</strong>
+			<%= @person.address %>
+		</div>
+		<div class="col-xs-12 col-sm-6 col-md-4">
+			<strong>Delegación:</strong>
+			<%= @person.delegation %>
+		</div>
+	</p>
+	<p>
+		<br>
+		<div class="col-xs-12 col-sm-6 col-md-4">
+			<strong>Ciudad:</strong>
+			<%= @person.city.name %>
+		</div>
+		<div class="col-xs-12 col-sm-6 col-md-4">
+			<strong>Estado:</strong>
+			<%= @person.state.name %>
+		</div>
+		<div class="col-xs-12 col-sm-6 col-md-4">
+			<strong>País:</strong>
+			<%= @person.state.country.name %>
+		</div>
+	</p>
+	<p>
+		<br>
+		<div class="col-xs-12 col-sm-12 col-md-8">
+			<strong>Registrado como:</strong>
+			<% if @person.student == 1 %>
+			<%= 'Estudiante' %>
+			<% end %>
+			<% if @person.employee == 1 %>
+			<%= 'Empleado' %>
+			<% end %>
+			<% if @person.instructor == 1 %>
+			<%= 'Instructor' %>
+			<% end %>
+			<% if @person.host == 1 %>
+			<%= 'Organizador' %>
+			<% end %>
+			<% if @person.patient == 1 %>
+			<%= 'Paciente' %>
+			<% end %>
+		</div>
+	</p>
+	<br>
+	<p>
+		<%= link_to 'Atrás', people_path, {:class=>"btn btn-link"} %> | <%= link_to 'Editar', edit_person_path(@person), {:class=>"btn btn-link"} %>
 	</p>
 </div>
