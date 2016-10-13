@@ -6,7 +6,7 @@ class CreatePeople < ActiveRecord::Migration[5.0]
     t.date     "birth_date"
     t.string   "sex"
     t.string   "email"
-    t.integer  "phone"
+    t.string   "phone"
     t.string   "job_title"
     t.text     "address"
     t.string   "delegation"
@@ -14,6 +14,7 @@ class CreatePeople < ActiveRecord::Migration[5.0]
     t.integer  "patient"
     t.integer  "student"
     t.integer  "instructor"
+    t.integer  "client"
     t.integer  "host"
     t.integer  "city_id"
     t.datetime "created_at", null: false

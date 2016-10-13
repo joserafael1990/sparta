@@ -70,7 +70,10 @@
 		<div class="col-xs-12 col-sm-12 col-md-8">
 			<strong>Registrado como:</strong>
 			<% if @person.student == 1 %>
-			<%= 'Estudiante' %>
+			<%= 'Alumno' %>
+			<% end %>
+			<% if @person.client == 1 %>
+			<%= 'Cliente' %>
 			<% end %>
 			<% if @person.employee == 1 %>
 			<%= 'Empleado' %>

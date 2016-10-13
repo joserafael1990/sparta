@@ -1,6 +1,7 @@
 console.log('loaded people.js')//check that the file is loaded
 
 $(document).on('change','#countries_list', function () {//change states when user changes country
+   $("#states_list").append($("<option></option>").attr("value", null).text('Seleccione un estado'));
    load_states_from_countries_dropdown();
 });
 
@@ -8,8 +9,11 @@ $(document).on('change','#states_list', function () {//change states when user c
    load_cities_from_states_dropdown();
 });
 
-$(document).ready(load_states_from_countries_dropdown);
-$(document).ready(load_cities_from_states_dropdown);
+$(window).on('load', function() {
+    load_states_from_countries_dropdown:
+    load_cities_from_states_dropdown;
+});
+
 
 function load_states_from_countries_dropdown(){
     var request = "/states/find_states_given_country_id?country_id=" //access controller of interest
@@ -46,15 +50,20 @@ function load_cities_from_states_dropdown(){
 //modify the states' dropdown
 function change_states(data) { 
     $("#states_list").empty();//remove all states majors
+    $("#cities_list").empty();
+    //$("#states_list").append($("<option></option>").attr("value", null).text('Seleccione un estado'));
+    $("#states_list").append($("<option></option>").attr("value", null).text('Seleccione un estado'));  
     for(i = 0;i<data.length;i++){ 
         $("#states_list").append(//add in an option for each major
             $("<option></option>").attr("value", data[i].id).text(data[i].name)
             );
     }
+    //$("#states_list").append($("<option></option>").attr("value", null).text('Seleccione un estado'));
 };
 
 function change_cities(data) { 
     $("#cities_list").empty();//remove all states majors
+    $("#cities_list").append($("<option></option>").attr("value", null).text('Seleccione una ciudad'));  
     for(i = 0;i<data.length;i++){ 
         $("#cities_list").append(//add in an option for each major
             $("<option></option>").attr("value", data[i].id).text(data[i].name)
