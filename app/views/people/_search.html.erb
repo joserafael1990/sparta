@@ -1,7 +1,12 @@
-<%= search_form_for @search do |f| %>	
-	<div class="form-group">		
-		<%= f.text_field :name_cont, autofocus: true, placeholder: 'Ingrese nombre' %>
-		<%= f.submit 'Buscar', class: "btn btn-link"  %>
-		<%= link_to 'Nueva persona', new_person_path, {:class=>"btn btn-info"} %>
-	</div>
+<%= search_form_for @search do |f| %>
+  <%= f.condition_fields do |c| %>
+    <%= render "condition_fields", f: c %>
+  <% end %>
+  <div class="field">
+    Ordenar:
+    <%= f.sort_fields do |s| %>
+      <%= s.sort_select %>
+    <% end %>
+  </div>
+  <div class="actions"><%= f.submit "Buscar" %></div>
 <% end %>

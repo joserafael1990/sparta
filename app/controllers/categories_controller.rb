@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
   before_action :authenticate_user!, except:  [:show, :index]
-  before_action :set_category, except: [:index, :new]
+  before_action :set_category, except: [:index, :new, :create]
 
   def create
     @category = Category.new(category_params)

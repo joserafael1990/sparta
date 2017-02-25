@@ -1,21 +1,34 @@
 <% javascript 'bootstrap' %>
-<% javascript 'bootstrap-formhelpers' %>
 <br>
 <br>
 <br>
 <div class="col-xs-6 col-sm-3">
 	<ul class="nav nav-pills nav-stacked" >
 		<h3>Entidades</h3>
-		<li class="<%= 'active' if params[:controller] == 'categories' %>"> <%= link_to 'Categorias', categories_path %></li> 
 		<li class="dropdown">
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ubicación geográfica <span class="caret"></span></a>
 			<ul class="dropdown-menu"> 
 				<li class="<%= 'active' if params[:controller] == 'countries' %>"> <%= link_to 'Paises', countries_path %></li>      
 				<li class="<%= 'active' if params[:controller] == 'states' %>"> <%= link_to 'Estados', states_path %></li>    
 				<li class="<%= 'active' if params[:controller] == 'cities' %>"> <%= link_to 'Ciudades', cities_path %></li>
-			</li>  
+			</li>   
 		</ul>
 		<li class="<%= 'active' if params[:controller] == 'people' %>"> <%= link_to 'Personas', people_path %></li> 
+		<li class="dropdown">
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Control interno <span class="caret"></span></a>
+			<ul class="dropdown-menu"> 
+				<li class="<%= 'active' if params[:controller] == 'borrowings' %>"> <%= link_to 'Préstamos', borrowings_path %></li>
+				<li class="<%= 'active' if params[:controller] == 'payments' %>"> <%= link_to 'Pago de sueldos', payments_path %></li>         
+			</ul>
+		</li>
+		<li class="dropdown">
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Eventos <span class="caret"></span></a>
+			<ul class="dropdown-menu"> 
+				<li class="<%= 'active' if params[:controller] == 'categories' %>"> <%= link_to 'Categorias', categories_path %></li> 
+				<li class="<%= 'active' if params[:controller] == 'catalogs' %>"> <%= link_to 'Catálogo', catalogs_path %></li>    
+				<li class="<%= 'active' if params[:controller] == 'events' %>"> <%= link_to 'Eventos programados', events_path %></li>        
+			</ul>
+		</li>
 	</div>
 
 	<!-- Small button group -->

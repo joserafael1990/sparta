@@ -7,6 +7,10 @@
 		<strong>Nombre:</strong>
 		<%= @state.name%>
 	</p>
+		<p>
+		<strong>País:</strong>
+		<%= @state.country.name%>
+	</p>
 	<p>
 		<%= link_to 'Atrás', states_path, {:class=>"btn btn-link"} %> | <%= link_to 'Editar', edit_state_path(@state), {:class=>"btn btn-link"} %>
 	</p>

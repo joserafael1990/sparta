@@ -22,7 +22,10 @@ class PeopleController < ApplicationController
 
 	def index
 		@search = Person.ransack(params[:q])
-		@people = @search.result.page(params[:page]).per(20)
+		@people = @search.result.page(params[:page]).per(20)   
+
+		@search.build_condition if @search.conditions.empty?
+  		@search.build_sort if @search.sorts.empty?
 	end
 
 
