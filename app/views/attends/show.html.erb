@@ -1,0 +1,17 @@
+<%=render 'layouts/admin'%>
+
+<div class="col-xs-12 col-sm-6 col-md-8">
+	<br>
+	<h2>Ver particpante</h2> 
+	<p>
+		<strong>Nombre:</strong>
+		<%= @attend.person.name%>
+	</p>
+		<p>
+		<strong>Evento:</strong>
+		<%= @attend.event_id%>
+	</p>
+	<p>
+		<%= link_to 'Atrás', attends_path, {:class=>"btn btn-link"} %> | <%= link_to 'Editar', edit_attend_path(@attend), {:class=>"btn btn-link"} %>
+	</p>
+</div>

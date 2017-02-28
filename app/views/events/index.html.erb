@@ -1,0 +1,35 @@
+<%=render 'layouts/admin'%>
+<div class="col-xs-12 col-sm-8">
+	<br>
+	<h2>Eventos</h2> <br>
+	<%= render 'search' %>
+
+
+
+	<table style= "width: 100%;">
+			<tr>
+				<th>Tipo</th>
+				<th>Nombre</th>
+				<th>Fecha</th>
+				<th>Ubicación</th>
+				<th>Instructor</th>
+				<th colspan="2">Acciones</th>
+			</tr>
+			<br>
+			<% @events.each do |event|%>
+			<tr>
+				<td><%= event.catalog.category.name %></td>
+				<td><%= link_to event.catalog.name, event_path(event) %></td>
+				<td><%= event.event_date %></td>
+				<% @armar =  '/assets/flags/'+ event.city.state.country.name %>
+				<td> <%= image_tag(@armar)%> <%= event.city.name %></td>
+				<td><%= event.instructor.name+' '+ event.instructor.last_name%></td>
+				<td><%= link_to raw('<span class="glyphicon glyphicon-eye-open fa-2x"></span>'), event_path(event) %></td>
+				<td><%= link_to raw('<span class="glyphicon glyphicon-edit fa-2x"></span>'), edit_event_path(event) %></td>
+				<td><%= link_to raw('<span class="glyphicon glyphicon-trash fa-2x"></span>'), event_path(event), method: :delete, data: { confirm: '¿Está seguro?'} %></td>
+			</tr>
+			<% end %>
+		</table>
+		<br><br>
+		<p><%= paginate @events %></p>
+	</div>

@@ -1,0 +1,17 @@
+<%=render 'layouts/admin'%>
+
+<div class="col-xs-12 col-sm-6 col-md-8">
+	<br>
+	<h2>Ver item</h2> 
+	<p>
+		<strong>Nombre:</strong>
+		<%= @catalog.name%>
+	</p>
+		<p>
+		<strong>Categoría:</strong>
+		<%= @catalog.category.name%>
+	</p>
+	<p>
+		<%= link_to 'Atrás', catalogs_path, {:class=>"btn btn-link"} %> | <%= link_to 'Editar', edit_catalog_path(@catalog), {:class=>"btn btn-link"} %>
+	</p>
+</div>

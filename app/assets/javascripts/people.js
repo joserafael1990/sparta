@@ -47,6 +47,7 @@ function load_cities_from_states_dropdown(){
  }
 };
 
+
 //modify the states' dropdown
 function change_states(data) { 
     $("#states_list").empty();//remove all states majors
@@ -70,3 +71,11 @@ function change_cities(data) {
             );
     }
 };
+
+                       
+
+function add_fields(link, association, content) {  
+    var new_id = new Date().getTime();  
+    var regexp = new RegExp("new_" + association, "g");  
+    $(link).parent().before(content.replace(regexp, new_id));  
+}

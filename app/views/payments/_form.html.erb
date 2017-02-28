@@ -1,0 +1,44 @@
+<% javascript 'payments' %>
+<%= form_for @payment  do |f| %>
+<% if @payment.errors.any? %>
+<div id="error_explanation">
+	<h2>
+		<%= pluralize(@payment.errors.count, "error") %> No se puede guardar el pago:
+	</h2>
+	<ul>
+		<% @payment.errors.full_messages.each do |msg| %>
+		<li><%= msg %></li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
+<div class="row">
+	<div class="col-xs-4 col-sm-7">
+		<div class="form-horizontal" >
+			<div class="form-group">
+				<%= f.label 'Persona ', class: "col-sm-2 control-label", style: "text-align: left;"  %>
+				<div class="col-sm-8">
+					<%= f.collection_select :person_id, Person.order(:name, :last_name).where(:employee => 1) , :id, :name_with_last_name, {prompt: "Seleccione la persona"}, id: 'employee_list',  class: "form-control"%>
+				</div>
+			</div>
+			<div class="form-group">
+				<%= f.label 'Monto', class: "col-sm-2 control-label", style: "text-align: left;"  %>
+				<div class="col-sm-8">
+					<%= f.number_field :amount, autofocus: true, class: "form-control", placeholder: 'Ingrese el monto'  %>
+				</div>
+			</div>
+			<div class="form-group">
+				<%= f.label 'Descripción', class: "col-sm-2 control-label", style: "text-align: left;"  %>
+				<div class="col-sm-8">
+					<%= f.text_field :description, autofocus: true, class: "form-control", placeholder: 'Ingrese el motivo'  %>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-offset-4 col-sm-10">
+					<%= f.submit "Enviar", class: "btn btn-primary btn-lg"  %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<% end %>

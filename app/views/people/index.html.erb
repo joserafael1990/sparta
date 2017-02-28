@@ -8,27 +8,29 @@
 
 
 	<table style= "width: 100%;">
-			<tr>
-				<th>Nombre</th>
-				<th>Email</th>
-				<th>Teléfono</th>
-				<th>Ubicación</th>
-				<th colspan="2">Acciones</th>
-			</tr>
-			<br>
-			<% @people.each do |person|%>
-			<tr>
-				<td><%= link_to person.name+ ' ' +person.last_name, person_path(person) %></td>
-				<td><%= person.email %></td>
-				<% @armar =  '/assets/flags/'+ person.city.state.country.name %>
-				<td> <%= person.phone %></td>
-				<td> <%= image_tag(@armar)%> <%= person.city.name+'-'+person.city.state.name %></td>
-				<td><%= link_to raw('<span class="glyphicon glyphicon-eye-open fa-2x"></span>'), person_path(person) %></td>
-				<td><%= link_to raw('<span class="glyphicon glyphicon-edit fa-2x"></span>'), edit_person_path(person) %></td>
-				<td><%= link_to raw('<span class="glyphicon glyphicon-trash fa-2x"></span>'), person_path(person), method: :delete, data: { confirm: '¿Está seguro?'} %></td>
-			</tr>
-			<% end %>
-		</table>
-		<br><br>
-		<p><%= paginate @people %></p>
-	</div>
+		<tr>
+			<th><%= sort_link(@search, :name, "Nombre")%></th>
+			<th><%= sort_link(@search, :email, "Email")%></th>
+			<th>Teléfono</th>
+			<th>Ubicación</th>
+			<th colspan="2">Acciones</th>
+		</tr>
+		<br>																																													
+		<% @people.each do |person|%>
+		<tr>
+			<td><%= link_to person.name+ ' ' +person.last_name, person_path(person) %></td>
+			<td><%= person.email %></td>
+			<% @armar =  '/assets/flags/'+ person.city.state.country.name %>
+			<td> <%= person.phone %></td>
+			<td> <%= image_tag(@armar)%> <%= person.city.name+'-'+person.city.state.name %></td>
+			<td><%= link_to raw('<span class="glyphicon glyphicon-eye-open fa-2x"></span>'), person_path(person) %></td>
+			<td><%= link_to raw('<span class="glyphicon glyphicon-edit fa-2x"></span>'), edit_person_path(person) %></td>
+			<td><%= link_to raw('<span class="glyphicon glyphicon-trash fa-2x"></span>'), person_path(person), method: :delete, data: { confirm: '¿Está seguro?'} %></td>
+		</tr>
+		<% end %>
+	</table>
+	<br><br>
+	<%= link_to 'Nueva persona', new_person_path, {:class=>"btn btn-info"} %>
+	<p><%= paginate @people %></p>
+
+</div>
