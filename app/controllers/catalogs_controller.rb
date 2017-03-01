@@ -23,7 +23,7 @@ class CatalogsController < ApplicationController
 
    	def find_products_given_category_id
 	   category_id = params[:category_id]#utilizes the url to extract country_id ".../find_states_given_country_id?country_id=1"
-	   catalogs = State.search_for_category_id(category_id).order(:name).as_json#query the model for the data and convert it to a hash using as_json
+	   catalogs = Catalog.search_for_category_id(category_id).order(:name).as_json#query the model for the data and convert it to a hash using as_json
 	   respond_to do |format|
 	   	format.json { 
 	   		render json: catalogs

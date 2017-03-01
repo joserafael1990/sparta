@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'states/find_states_given_country_id'
   get 'cities/find_cities_given_state_id'
   get 'borrowings/find_pendings_given_employee_id'
-  get 'catalogs/find_catalogs_given_category_id'
+  get 'catalogs/find_products_given_category_id'
 
 
     resources :admin
