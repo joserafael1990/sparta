@@ -36,7 +36,7 @@ class EventsController < ApplicationController
 
 	def show
 		@total = Attend.where(:event_id => @event).count
-		@participants = Attend.includes(:person).order("people.name asc").where(:event_id => @event)
+		@participants = Attend.includes(:person).order("people.name asc").where(:event_id => @event.id)
 	end
 
 	def update

@@ -17,7 +17,7 @@
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<% if user_signed_in? %>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="profile"><span class="glyphicon glyphicon-user"></span> Editar usuario</a></li>
+					<li><a href="profile"><span class="glyphicon glyphicon-user"></span> <%= current_user.email %></a></li>
 					<li> <%= link_to raw('Cerrar sesión <span class="glyphicon glyphicon-off"></span>'), destroy_user_session_path, :method => :delete %></li>
 				</ul>
 				<% else %>

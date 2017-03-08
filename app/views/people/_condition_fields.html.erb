@@ -1,6 +1,6 @@
 <div class="field">
   <%= f.attribute_fields do |a| %>
-    <%= a.attribute_select  associations: [:country, :state, :city]%>
+    <%= a.attribute_select  associations: [:country, :state, :city, :catalogs]%>
   <% end %>
   <%= f.predicate_select %>
   <%= f.value_fields do |v| %>

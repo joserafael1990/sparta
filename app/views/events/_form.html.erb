@@ -68,6 +68,13 @@
 				</div>
 			</div>
 			<div class="form-group">
+				<%= f.label 'Dirección', class: "col-sm-2 control-label", style: "text-align: left;"  %>
+				<div class="col-sm-8">
+					<%= f.text_field :address, autofocus: true, class: "form-control", placeholder: 'Ingrese dirección'  %>
+				</div>
+			</div>
+
+			<div class="form-group">
 				<%= f.label 'Organizador ', class: "col-sm-2 control-label", style: "text-align: left;"  %>
 				<div class="col-sm-8">
 					<%= f.collection_select :host_id, Person.order(:name, :last_name).where(:host => 1) , :id, :name_with_last_name, {prompt: "Seleccione la persona"},  class: "form-control"%>

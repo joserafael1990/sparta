@@ -38,6 +38,9 @@ class PeopleController < ApplicationController
 	end
 
 	def show
+		@total = Attend.where(:person_id => @person).count
+
+		@courses = Attend.includes(:category).order("categories.name asc").where(:person_id => @person.id)
 	end
 
 	def update

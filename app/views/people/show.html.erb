@@ -104,4 +104,32 @@
 	<p>
 		<%= link_to 'Atrás', people_path, {:class=>"btn btn-link"} %> | <%= link_to 'Editar', edit_person_path(@person), {:class=>"btn btn-link"} %>
 	</p>
+
+	<h3>
+		Cantidad de capacitaciones registradas: <%= @total   %>
+</p>
+	</h3>
+	
+	<% if @total > 0 %>
+	<table style= "width: 100%;">
+			<tr>
+				<th>Capacitación</th>
+				<th>Fecha</th>
+				<th>Lugar</th>
+				<th>Instructor</th>
+				<th colspan="2">Acciones</th>
+			</tr>
+
+			<% @courses.each do |course|%>
+			<tr>
+				<td><%=course.category.name + ': ' + course.catalog.name  %></td>
+				<td><%=course.event.event_date  %></td>
+				<% @armar =  '/assets/flags/'+ course.event.city.state.country.name %>
+				<td><%= image_tag(@armar)%> <%=course.event.city.name%></td>
+				<td><%=course.event.instructor.name + ' ' + course.event.instructor.last_name  %></td>
+				<td><%= link_to raw('<span class="glyphicon glyphicon-trash fa-2x"></span>'), attend_path(course), method: :delete, data: { confirm: '¿Está seguro?'} %></td>
+			</tr>
+			<% end %>
+		</table>
+	<% end %>
 </div>

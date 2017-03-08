@@ -1,9 +1,11 @@
 class Event < ApplicationRecord
 	belongs_to :catalog
-	belongs_to :category
+	has_one :category, :through => :catalog
+
 	belongs_to :city
-	belongs_to :state
-	belongs_to :country
+  	has_one :state, :through => :city
+  	has_one :country, :through => :state
+  	
   	belongs_to :instructor, :class_name => 'Person'
   	belongs_to :host, :class_name => 'Person'
   	has_many :attends
