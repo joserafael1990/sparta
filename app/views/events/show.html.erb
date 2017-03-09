@@ -13,11 +13,21 @@
 			<%= @event.catalog.name%>
 		</div>
 	</p>
-
+	<p>
+		<br>
+		<div class="col-xs-12 col-sm-4 col-md-4">
+			<strong>Fecha:</strong>
+			<%= @event.event_date%>
+		</div>
+		<div class="col-xs-12 col-sm-4 col-md-4">
+			<strong>Dirección:</strong>
+			<%= @event.address%>
+		</div>
+	</p>
 	<p>
 		<br>
 		<div class="col-xs-12 col-sm-6 col-md-4">
-			<strong>Nombre:</strong>
+			<strong>Ciudad:</strong>
 			<%= @event.city.name%>
 		</div>
 		<div class="col-xs-12 col-sm-6 col-md-4">
@@ -32,10 +42,6 @@
 	<p>
 		<br>
 		<div class="col-xs-12 col-sm-4 col-md-4">
-			<strong>Fecha:</strong>
-			<%= @event.event_date%>
-		</div>
-		<div class="col-xs-12 col-sm-4 col-md-4">
 			<strong>Organizado por:</strong>
 			<%= @event.host.name + ' ' + @event.host.last_name%>
 		</div>
@@ -46,33 +52,33 @@
 	</p>
 	<br>
 	<br>
-		<%= link_to 'Atrás', events_path, {:class=>"btn btn-link"} %> | <%= link_to 'Editar', edit_event_path(@event), {:class=>"btn btn-link"} %>
+	<%= link_to 'Atrás', events_path, {:class=>"btn btn-link"} %> | <%= link_to 'Editar', edit_event_path(@event), {:class=>"btn btn-link"} %>
 	<br>
 	<h3>
 		Cantidad de participantes registrados: <%= @total %> <%= link_to 'Registrar participantes', new_attend_path(:event_id => @event.id), {:class=>"btn btn-link"} %>
-</p>
-	</h3>
-	
-	<% if @total > 0 %>
-	<table style= "width: 100%;">
-			<tr>
-				<th>Participante</th>
-				<th>Teléfono</th>
-				<th>Correo</th>
-				<th>Enterado por</th>
-				<th colspan="2">Acciones</th>
-			</tr>
+	</p>
+</h3>
 
-			<% @participants.each do |participant|%>
-			<tr>
-				<td><%=participant.person.name + ' ' + participant.person.last_name %></td>
-				<td><%=participant.person.phone  %></td>
-				<td><%=participant.person.email  %></td>
-				<td><%=participant.comming_from  %></td>
-				<td><%= link_to raw('<span class="glyphicon glyphicon-trash fa-2x"></span>'), attend_path(participant), method: :delete, data: { confirm: '¿Está seguro?'} %></td>
-			</tr>
-			<% end %>
-		</table>
+<% if @total > 0 %>
+<table style= "width: 100%;">
+	<tr>
+		<th>Participante</th>
+		<th>Teléfono</th>
+		<th>Correo</th>
+		<th>Enterado por</th>
+		<th colspan="2">Acciones</th>
+	</tr>
+
+	<% @participants.each do |participant|%>
+	<tr>
+		<td><%=participant.person.name + ' ' + participant.person.last_name %></td>
+		<td><%=participant.person.phone  %></td>
+		<td><%=participant.person.email  %></td>
+		<td><%=participant.comming_from  %></td>
+		<td><%= link_to raw('<span class="glyphicon glyphicon-trash fa-2x"></span>'), attend_path(participant), method: :delete, data: { confirm: '¿Está seguro?'} %></td>
+	</tr>
 	<% end %>
+</table>
+<% end %>
 
 </div>

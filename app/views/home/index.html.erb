@@ -1,7 +1,77 @@
 	<% if user_signed_in? %>
-		<% if current_user.admin == true %>
-			<%= render 'layouts/admin' %>
-		<% else %>
-			<%= render 'layouts/no_admin' %>
-		<% end %>
+	<% if current_user.admin == true %>
+	<%= render 'layouts/admin' %>
+	<div class="col-xs-7 col-sm-5">
+		<br>
+		<div class="panel panel-primary"> 
+			<div class="panel-heading"> 
+				<h3 class="panel-title">Personas</h3> 
+			</div> 
+			<div class="panel-body"> 
+				<ul class="list-group">
+					<li class="list-group-item">
+						<span class="badge"><%= Person.count %></span>
+						Registradas
+						<ul class="list-group">
+							<li class="list-group-item">
+								<span class="badge"><%= Person.where(:student => '1').count %></span>
+								Alumnos
+							</li>
+							<li class="list-group-item">
+								<span class="badge"><%= Person.where(:instructor => '1').count %></span>
+								Instructores
+							</li>
+							<li class="list-group-item">
+								<span class="badge"><%= Person.where(:host => '1').count %></span>
+								Organizadores
+							</li>
+							<li class="list-group-item">
+								<span class="badge"><%= Person.where(:patient => '1').count %></span>
+								Pacientes
+							</li>
+						</ul>
+					</li>
+					<li class="list-group-item">
+						<span class="badge"><%= Attend.count %></span>
+						Asistentes a eventos
+						<ul class="list-group">
+							<li class="list-group-item">
+								<span class="badge"><%= @domestics_total %></span>
+								Domésticos
+							</li>
+							<li class="list-group-item">
+								<span class="badge"><%= @foreings_total %></span>
+								Foráneos
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div> 
+		</div>
+	</div>
+	<br>
+	<div class="col-xs-7 col-sm-3">
+		<div class="panel panel-success"> 
+			<div class="panel-heading"> 
+				<h3 class="panel-title">Cursos domésticos pendientes 2017</h3> 
+			</div> 
+			<div class="panel-body"> 
+				<ul class="list-group">
+					<h4>Eventos con participantes <span class="badge"> <%= Attend.includes(:category).where("events.address" => 'Av. Sonora 149-7').count %></span></h4> 
+							<% @courses.each do |c|%>
+							<li class="list-group-item">
+								<span class="badge"><%= Attend.where(:event_id => c.event_id).count %></span>
+								<%= link_to c.catalog.category.name+': '+c.catalog.name+' '+c.event.event_date.to_s, event_path(c.event) %>
+							</li>
+							<% end %>
+						</ul>
+
+					</li>
+				</ul>
+			</div> 
+		</div>
+	</div>
+	<% else %>
+	<%= render 'layouts/no_admin' %>
+	<% end %>
 	<% end %> 
