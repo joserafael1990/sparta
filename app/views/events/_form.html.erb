@@ -70,7 +70,8 @@
 			<div class="form-group">
 				<%= f.label 'Dirección', class: "col-sm-2 control-label", style: "text-align: left;"  %>
 				<div class="col-sm-8">
-					<%= f.text_field :address, autofocus: true, class: "form-control", placeholder: 'Ingrese dirección'  %>
+					<%= f.text_field :address, autofocus: true, class: "form-control", value: 'Av. Sonora 149-7' if @event.new_record? %>
+					<%= f.text_field :address, autofocus: true, class: "form-control", placeholder: 'Ingrese dirección' if @event.persisted? %>
 				</div>
 			</div>
 

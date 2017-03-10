@@ -86,7 +86,7 @@ function load_cities_from_states_dropdown(){
  }
 };
 
-//modify the states' dropdown
+//modify the cities' dropdown
 function change_cities(data) { 
     $("#cities_list").empty();//remove all states majors
     $("#cities_list").append($("<option></option>").attr("value", null).text('Seleccione una ciudad'));  
