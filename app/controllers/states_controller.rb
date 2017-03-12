@@ -45,6 +45,8 @@
 	end
 
 	def show
+		@total = City.where(:state_id => @state).count
+		@cities = City.order("name asc").where(:state_id => @state.id)
 	end
 
 	def update

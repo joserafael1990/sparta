@@ -14,4 +14,27 @@
 	<p>
 		<%= link_to 'Atrás', states_path, {:class=>"btn btn-link"} %> | <%= link_to 'Editar', edit_state_path(@state), {:class=>"btn btn-link"} %>
 	</p>
+
+		<h3>
+		Cantidad de ciudades registradas: <%= @total %> <%= link_to 'Registrar ciudad', new_city_path(:state_id => @state.id), {:class=>"btn btn-link"} %>
+	</p>
+</h3>
+
+<% if @total > 0 %>
+<table style= "width: 100%;">
+	<tr>
+		<th>Nombre</th>
+
+		<th colspan="2">Acciones</th>
+	</tr>
+
+	<% @cities.each do |city|%>
+	<tr>
+		<td><%=city.name  %></td>
+		<td><%= link_to raw('<span class="glyphicon glyphicon-trash fa-2x"></span>'), city_path(city), method: :delete, data: { confirm: '¿Está seguro?'} %></td>
+	</tr>
+	<% end %>
+</table>
+<% end %>
+
 </div>

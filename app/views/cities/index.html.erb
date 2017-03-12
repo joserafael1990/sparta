@@ -7,9 +7,9 @@
 
 	<table style= "width: 100%;">
 		<tr>
-			<th>Nombre</th>
-			<th>Estado</th>
-			<th >País</th>
+			<th><%= sort_link(@search, :name, "Ciudad") %></th>
+			<th><%= sort_link(@search, :state_id, "Estado") %></th>
+			<th ><%= sort_link(@search, :country_id, "País") %></th>
 			<th colspan="2">Acciones</th>
 		</tr>
 
