@@ -4,6 +4,8 @@ class State < ApplicationRecord
   has_many :people, through: :cities
   validates :name, :presence => {:message => "Usted ingresar un nombre"}
 
+  validates_uniqueness_of  :name, :scope => :country
+
   def self.search_for_country_id(id)
   	where("country_id = ?",id)        
   end

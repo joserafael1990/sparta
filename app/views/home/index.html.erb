@@ -67,11 +67,11 @@
 			<div class="panel-body"> 
 				<ul class="list-group">
 					<h4>Eventos con participantes 2017</h4> 
-					<% @courses.each do |c|%>
-					<%if c.event.event_date.year == Time.current.year %>
+					<% @events.each do |e|%>
+					<%if e.event_date.year == Time.current.year %>
 					<li class="list-group-item">
-						<span class="badge"><%= Attend.where(:event_id => c.event_id).count %></span>
-						<%= link_to c.catalog.category.name+': '+c.catalog.name+' '+c.event.event_date.to_s, event_path(c.event) %>
+						<span class="badge"><%= Attend.where(:event_id => e.id).count %></span>
+						<%= link_to e.catalog.category.name+': '+e.catalog.name+' '+e.event_date.to_s, event_path(e) %>
 					</li>
 					<% end %>
 					<% end %>

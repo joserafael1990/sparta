@@ -5,7 +5,7 @@ class HomeController < ApplicationController
 				headquarter = 'Av. Sonora 149-7'
 				@domestics_total = Attend.includes(:event).where("events.address" => headquarter).count
 				@foreings_total = Attend.includes(:event).where.not("events.address" => headquarter).count
-				@courses = 	Attend.includes(:category).where("events.address" => headquarter).order("events.event_date asc")
+				@events = 	Event.includes(:category).where("address" => headquarter).order("event_date asc")
   			end
 		end
 	end
