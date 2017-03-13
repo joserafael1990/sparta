@@ -1,7 +1,7 @@
 	<% if user_signed_in? %>
 	<% if current_user.admin == true %>
 	<%= render 'layouts/admin' %>
-	<h2>Dashboard</h2>
+	<h2>Dashboardls </h2>
 	<div class="col-xs-7 col-sm-5">
 		<br>
 		<div class="panel panel-primary"> 
@@ -17,6 +17,14 @@
 							<li class="list-group-item">
 								<span class="badge"><%= Person.where(:student => '1').count %></span>
 								Alumnos
+							</li>
+							<li class="list-group-item">
+								<span class="badge"><%= Person.where(:client => '1').count %></span>
+								Cliente
+							</li>
+							<li class="list-group-item">
+								<span class="badge"><%= Person.where(:whosaler => '1').count %></span>
+								Distribuidor
 							</li>
 							<li class="list-group-item">
 								<span class="badge"><%= Person.where(:instructor => '1').count %></span>
@@ -60,12 +68,12 @@
 				<ul class="list-group">
 					<h4>Eventos con participantes 2017</h4> 
 					<% @courses.each do |c|%>
-						<%if c.event.event_date.year == Time.current.year %>
-							<li class="list-group-item">
-								<span class="badge"><%= Attend.where(:event_id => c.event_id).count %></span>
-								<%= link_to c.catalog.category.name+': '+c.catalog.name+' '+c.event.event_date.to_s, event_path(c.event) %>
-							</li>
-						<% end %>
+					<%if c.event.event_date.year == Time.current.year %>
+					<li class="list-group-item">
+						<span class="badge"><%= Attend.where(:event_id => c.event_id).count %></span>
+						<%= link_to c.catalog.category.name+': '+c.catalog.name+' '+c.event.event_date.to_s, event_path(c.event) %>
+					</li>
+					<% end %>
 					<% end %>
 				</ul>
 
