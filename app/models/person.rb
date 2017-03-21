@@ -18,6 +18,9 @@ class Person < ApplicationRecord
   validates :job_title, :presence => {:message => "Usted ingresar un oficio"}
   validates :city_id, :presence => {:message => "Indique donde la ciudad donde reside"}
 
+  validates_uniqueness_of :city_id, scope: [:name, :last_name, :birth_date], :message => "La persona esta registrada"
+
+
   def name_with_last_name
     "#{name} #{last_name}"
   end
