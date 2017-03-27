@@ -53,7 +53,7 @@ class PeopleController < ApplicationController
 
 	protected
 		def person_params
-			params.require(:person).permit(:name, :last_name, :email, :sex, :job_title, :birth_date, :phone, :address, :neighborhood, :zip_code, :delegation, :city_id, :state_id, :country_id, :employee, :instructor, :membership :host, :patient, :student, :client, :whosaler)
+			params.require(:person).permit(:name, :last_name, :email, :sex, :job_title, :birth_date, :phone, :address, :neighborhood, :zip_code, :delegation, :city_id, :state_id, :country_id, :employee, :instructor, :membership, :host, :patient, :student, :client, :whosaler)
 		end
 
 end
