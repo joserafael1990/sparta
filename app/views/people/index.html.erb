@@ -1,6 +1,6 @@
 <%=render 'layouts/admin'%>
 
-<div class="col-xs-12 col-sm-8">
+<div class="col-8">
 	<br>
 	<h2>Personas</h2> <br>
 	<%= render 'search' %>
@@ -33,4 +33,5 @@
 	<%= link_to 'Nueva persona', new_person_path, {:class=>"btn btn-info"} %>
 	<p><%= paginate @people %></p>
 
+</div>
 </div>

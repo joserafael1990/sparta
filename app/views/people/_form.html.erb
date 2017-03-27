@@ -116,6 +116,7 @@
 				<%= f.label 'Registrar como',  class: "col-sm-2 control-label", style: "text-align: center; padding-top: 40px;" %>
 				<div class="col-sm-8">
 					Seleccione los que apliquen <br>
+					<%= f.check_box :membership %> Afiliado <br>
 					<%= f.check_box :student %> Alumno <br>
 					<%= f.check_box :client %> Cliente <br>
 					<%= f.check_box :whosaler %> Distruidor <br>

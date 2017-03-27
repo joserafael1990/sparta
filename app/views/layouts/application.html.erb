@@ -8,27 +8,28 @@
 	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 	<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 	<%= yield(:head) %>
-
-	<nav class="navbar navbar-default navbar-fixed-top">
-		<div class="container">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="http://localhost:3000/home"> <%= image_tag("small logo.png") %> </a>
+	<div class="row">
+		<nav class="navbar navbar-default navbar-fixed-top">
+			<div class="container">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="http://localhost:3000/home"> <%= image_tag("small logo.png") %> </a>
+				</div>
+				<div class="collapse navbar-collapse" id="myNavbar">
+					<% if user_signed_in? %>
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="profile"><span class="glyphicon glyphicon-user"></span> <%= current_user.email %></a></li>
+						<li> <%= link_to raw('Cerrar sesión <span class="glyphicon glyphicon-off"></span>'), destroy_user_session_path, :method => :delete %></li>
+					</ul>
+					<% else %>
+					<ul class="nav navbar-nav navbar-right" >
+						<li><a href="signup">Registrarse</a></li>
+						<li><a href="login" >Iniciar sesión</a></li>
+					</ul>
+					<% end %>
+				</div>
 			</div>
-			<div class="collapse navbar-collapse" id="myNavbar">
-				<% if user_signed_in? %>
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="profile"><span class="glyphicon glyphicon-user"></span> <%= current_user.email %></a></li>
-					<li> <%= link_to raw('Cerrar sesión <span class="glyphicon glyphicon-off"></span>'), destroy_user_session_path, :method => :delete %></li>
-				</ul>
-				<% else %>
-				<ul class="nav navbar-nav navbar-right" >
-					<li><a href="signup">Registrarse</a></li>
-					<li><a href="login" >Iniciar sesión</a></li>
-				</ul>
-				<% end %>
-			</div>
-		</div>
-	</nav>
+		</nav>
+	</div>
 </head>
 <body>
 	<% if notice %>
