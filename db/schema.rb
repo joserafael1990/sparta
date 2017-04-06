@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170327161529) do
+ActiveRecord::Schema.define(version: 20170405185506) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,16 @@ ActiveRecord::Schema.define(version: 20170327161529) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "dispatchers", force: :cascade do |t|
+    t.integer  "quantity"
+    t.integer  "product_id"
+    t.integer  "person_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["person_id"], name: "index_dispatchers_on_person_id", using: :btree
+    t.index ["product_id"], name: "index_dispatchers_on_product_id", using: :btree
   end
 
   create_table "events", force: :cascade do |t|
@@ -92,6 +102,15 @@ ActiveRecord::Schema.define(version: 20170327161529) do
     t.index ["city_id"], name: "index_people_on_city_id", using: :btree
   end
 
+  create_table "products", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "price"
+    t.integer  "max_discount"
+    t.integer  "cost"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
   create_table "states", force: :cascade do |t|
     t.string   "name"
     t.integer  "country_id"
@@ -114,12 +133,15 @@ ActiveRecord::Schema.define(version: 20170327161529) do
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
     t.boolean  "admin",                  default: false
+    t.boolean  "active"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
   add_foreign_key "catalogs", "categories"
   add_foreign_key "cities", "states"
+  add_foreign_key "dispatchers", "people"
+  add_foreign_key "dispatchers", "products"
   add_foreign_key "events", "catalogs"
   add_foreign_key "events", "cities"
   add_foreign_key "states", "countries"

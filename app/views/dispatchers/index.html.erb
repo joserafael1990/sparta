@@ -1,0 +1,21 @@
+<div class="col-xs-7 col-sm-5">
+	<br>
+		<h2>Inventario</h2> <br>
+
+		<table style= "width: 70%;"> 
+			<tr>
+				<th>Nombre</th>
+				<th>Productos</th>
+			</tr>
+
+			<% @dispatchers.each do |dispatcher|%>
+			<tr>
+				<td><%= link_to dispatcher.person.name + ' ' + dispatcher.person.last_name, dispatcher_path(dispatcher.person_id) %></td>
+				<td><%= Dispatcher.where(:person_id => [dispatcher.person_id] ).sum(:quantity) %></td>
+			</tr>
+			<% end %>
+		</table>
+		<br><br>
+		<%= link_to 'Asignar inventario', new_dispatcher_path, {:class=>"btn btn-info"} %>
+	
+</div>

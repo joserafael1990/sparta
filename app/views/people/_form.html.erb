@@ -1,7 +1,4 @@
 <% javascript 'people' %>
-
-
-
 <%= form_for @person  do |f| %>
 <% if @person.errors.any? %>
 <div id="error_explanation">
@@ -109,7 +106,7 @@
 			<div class="form-group">
 				<%= f.label 'Código postal',  class: "col-sm-2 control-label", style: "text-align: left;" %>
 				<div class="col-sm-8">
-					<%= f.text_field :zip_code, autofocus: true, class: "form-control", placeholder: 'Ingrese el código postal'  %>
+					<%= f.number_field :zip_code, autofocus: true, class: "form-control", placeholder: 'Ingrese el código postal'  %>
 				</div>
 			</div>
 			<div class="form-group">

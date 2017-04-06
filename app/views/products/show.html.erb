@@ -1,0 +1,28 @@
+<div class="col-xs-12 col-sm-8">
+	<br>
+	<h2>Ver producto</h2> 
+	<p>
+		<div class="col-xs-12 col-sm-4 col-md-4">
+			<strong>Nombre:</strong>
+			<%= @product.name %>
+		</div>
+	</p>
+	<p>
+		<br>
+		<div class="col-xs-12 col-sm-6 col-md-4">
+			<strong>Precio:</strong>
+			<%= @product.price %>
+		</div>
+		<div class="col-xs-12 col-sm-6 col-md-4">
+			<strong>Decuento máximo:</strong>
+			<%= @product.max_discount %>
+		</div>
+		<div class="col-xs-12 col-sm-4 col-md-4">
+			<strong>Costo:</strong>
+			<%= @product.cost %>
+		</div>
+	</p>
+	<p>
+		<%= link_to 'Atrás', products_path, {:class=>"btn btn-link"} %> | <%= link_to 'Editar', edit_product_path(@product), {:class=>"btn btn-link"} %>
+	</p>
+</div>

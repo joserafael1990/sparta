@@ -1,6 +1,4 @@
 	<% if user_signed_in? %>
-	<% if current_user.admin == true %>
-	<%= render 'layouts/admin' %>
 	<h2>Dashboard </h2>
 	<div class="col-xs-7 col-sm-5">
 		<br>
@@ -82,7 +80,5 @@
 	</div> 
 </div>
 </div>
-<% else %>
-<%= render 'layouts/no_admin' %>
-<% end %>
+
 <% end %> 

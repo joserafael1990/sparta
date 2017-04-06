@@ -24,8 +24,6 @@ class PeopleController < ApplicationController
 		@search = Person.ransack(params[:q])
 		@people = @search.result.page(params[:page]).per(20)   
 		@search.build_condition
-
-
 	end
 
 

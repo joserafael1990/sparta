@@ -3,26 +3,34 @@
 <br>
 <br>
 <div class="row">
-<div class="col-xs-6 col-sm-3">
-	<ul class="nav nav-pills nav-stacked" >
-		<h3>Entidades</h3>
-		<li class="dropdown">
-			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ubicación geográfica <span class="caret"></span></a>
-			<ul class="dropdown-menu"> 
-				<li class="<%= 'active' if params[:controller] == 'countries' %>"> <%= link_to 'Paises', countries_path %></li>      
-				<li class="<%= 'active' if params[:controller] == 'states' %>"> <%= link_to 'Estados', states_path %></li>    
-				<li class="<%= 'active' if params[:controller] == 'cities' %>"> <%= link_to 'Ciudades', cities_path %></li>
-			</li>   
-		</ul>
-		<li class="<%= 'active' if params[:controller] == 'people' %>"> <%= link_to 'Personas', people_path %></li> 
-		<li class="dropdown">
-			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Eventos <span class="caret"></span></a>
-			<ul class="dropdown-menu"> 
-				<li class="<%= 'active' if params[:controller] == 'categories' %>"> <%= link_to 'Categorias', categories_path %></li> 
-				<li class="<%= 'active' if params[:controller] == 'catalogs' %>"> <%= link_to 'Catálogo', catalogs_path %></li>    
-				<li class="<%= 'active' if params[:controller] == 'events' %>"> <%= link_to 'Eventos programados', events_path %></li>        
+	<div class="col-xs-6 col-sm-3">
+		<ul class="nav nav-pills nav-stacked" >
+			<h3>Operar</h3>
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ubicación geográfica <span class="caret"></span></a>
+				<ul class="dropdown-menu"> 
+					<li class="<%= 'active' if params[:controller] == 'countries' %>"> <%= link_to 'Paises', countries_path %></li>      
+					<li class="<%= 'active' if params[:controller] == 'states' %>"> <%= link_to 'Estados', states_path %></li>    
+					<li class="<%= 'active' if params[:controller] == 'cities' %>"> <%= link_to 'Ciudades', cities_path %></li>
+				</li>   
 			</ul>
-		</li>
+			<li class="<%= 'active' if params[:controller] == 'people' %>"> <%= link_to 'Personas', people_path %></li> 
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Eventos <span class="caret"></span></a>
+				<ul class="dropdown-menu"> 
+					<li class="<%= 'active' if params[:controller] == 'categories' %>"> <%= link_to 'Categorias', categories_path %></li> 
+					<li class="<%= 'active' if params[:controller] == 'catalogs' %>"> <%= link_to 'Catálogo', catalogs_path %></li>    
+					<li class="<%= 'active' if params[:controller] == 'events' %>"> <%= link_to 'Eventos programados', events_path %></li>        
+				</ul>
+			</li>
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Inventario  <span class="caret"></span></a>
+				<ul class="dropdown-menu"> 
+					<li class="<%= 'active' if params[:controller] == 'products' %>"> <%= link_to 'Productos', products_path %></li>
+					<li class="<%= 'active' if params[:controller] == 'dispatchers' %>"> <%= link_to 'Asignaciones', dispatchers_path %></li>      
+				</ul>   
+			</li>
+		</ul>
 	</div>
 
 	<!-- Small button group -->

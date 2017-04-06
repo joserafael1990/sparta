@@ -11,6 +11,7 @@ class Person < ApplicationRecord
   has_many :events, through: :attends
   has_many :catalogs, through: :events
   has_many :categories, through: :catalogs
+  has_many :dispatchers
 
   validates :name, :presence => {:message => "Usted ingresar un nombre"}
   validates :last_name, :presence => {:message => "Usted ingresar un apellido"}

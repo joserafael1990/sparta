@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
+
+
   get 'states/find_states_given_country_id'
   get 'cities/find_cities_given_state_id'
   get 'borrowings/find_pendings_given_employee_id'
   get 'catalogs/find_products_given_category_id'
 
 
-    resources :admin
+    
     resources :attends  
     resources :borrowings
     resources :categories
@@ -13,12 +15,15 @@ Rails.application.routes.draw do
     resources :cities
     resources :events
     resources :countries
-    resources :no_admin
-    resources :states
+    resources :dispatchers
     resources :payments
     resources :people
-    resources :home
+    resources :products
+    resources :states
 
+    resources :admin
+    resources :home
+    resources :no_admin
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   devise_for :users, :path => '', :path_names => 
