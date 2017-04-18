@@ -57,7 +57,11 @@
 	</p>
 </h3>
 
+		<%= link_to 'Ver participantes', attend_path(@event), {:class=>"btn btn-info"} %>
+
+
 <% if @total > 0 %>
+<!--
 <table style= "width: 100%;">
 	<tr>
 		<th>Participante</th>
@@ -77,6 +81,7 @@
 	</tr>
 	<% end %>
 </table>
+-->
 <% end %>
 
 </div>

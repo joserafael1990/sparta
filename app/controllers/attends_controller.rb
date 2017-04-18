@@ -1,7 +1,7 @@
 class AttendsController < ApplicationController
 
   before_action :authenticate_user!, except:  [:show, :index]
-  before_action :set_category, except: [:index, :new, :create]
+  before_action :set_category, except: [:index, :new, :create, :show]
 
   def create
     @attend = Attend.new(attend_params)
@@ -36,6 +36,7 @@ class AttendsController < ApplicationController
   end
 
   def show
+     @attends = Attend.where(:event_id => params[:id])
   end
 
   def update
