@@ -61,27 +61,7 @@
 
 
 <% if @total > 0 %>
-<!--
-<table style= "width: 100%;">
-	<tr>
-		<th>Participante</th>
-		<th>Teléfono</th>
-		<th>Correo</th>
-		<th>Enterado por</th>
-		<th colspan="2">Acciones</th>
-	</tr>
-
-	<% @participants.each do |participant|%>
-	<tr>
-		<td><%=participant.person.name + ' ' + participant.person.last_name %></td>
-		<td><%=participant.person.phone  %></td>
-		<td><%=participant.person.email  %></td>
-		<td><%=participant.comming_from  %></td>
-		<td><%= link_to raw('<span class="glyphicon glyphicon-trash fa-2x"></span>'), attend_path(participant), method: :delete, data: { confirm: '¿Está seguro?'} %></td>
-	</tr>
-	<% end %>
-</table>
--->
-<% end %>
+<!-- aqui va-->
+<% aqui %>
 
 </div>
