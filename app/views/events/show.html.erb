@@ -71,7 +71,7 @@
 
 	<% @participants.each do |participant|%>
 	<tr>
-		<td><%=participant.person_id %></td>
+		<td><%=participant.person.name %></td>
 		<td><%= link_to raw('<span class="glyphicon glyphicon-trash fa-2x"></span>'), attend_path(participant), method: :delete, data: { confirm: '¿Está seguro?'} %></td>
 	</tr>
 	<% end %>
