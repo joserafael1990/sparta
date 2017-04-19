@@ -59,6 +59,23 @@
 
 		<%= link_to 'Ver participantes', attend_path(@event), {:class=>"btn btn-info"} %>
 
+<% if @total > 0 %>
+<table style= "width: 100%;">
+	<tr>
+		<th>Participante</th>
+		<th>Teléfono</th>
+		<th>Correo</th>
+		<th>Enterado por</th>
+		<th colspan="2">Acciones</th>
+	</tr>
 
-<!-- aqui iba -->
+	<% @participants.each do |participant|%>
+	<tr>
+		<td><%=participant.person_id %></td>
+		<td><%= link_to raw('<span class="glyphicon glyphicon-trash fa-2x"></span>'), attend_path(participant), method: :delete, data: { confirm: '¿Está seguro?'} %></td>
+	</tr>
+	<% end %>
+</table>
+<% end %>
+
 </div>
