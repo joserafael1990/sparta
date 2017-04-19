@@ -62,7 +62,8 @@
 <% if @total > 0 %>
 <table style= "width: 100%;">
 	<tr>
-		<th>Participante</th>
+		<th>Nombre</th>
+		<th>Apellido</th>
 		<th>Teléfono</th>
 		<th>Correo</th>
 		<th>Enterado por</th>
@@ -71,7 +72,8 @@
 
 	<% @participants.each do |participant|%>
 	<tr>
-		<td><%=participant.person.try(:name)  %></td>
+		<td><%=participant.person.try(:name) %></td>
+		<td><%=participant.person.try(:last_name) %></td>
 		<td><%=participant.person.try(:phone)  %></td>
 		<td><%=participant.person.try(:email)  %></td>
 		<td><%=participant.comming_from  %></td>
