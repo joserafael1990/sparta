@@ -71,11 +71,15 @@
 
 	<% @participants.each do |participant|%>
 	<tr>
-		<td><%=participant.person.name %></td>
+		<td><%=participant.person.try(:name) + ' ' + participant.person.try(:last_name) %></td>
+		<td><%=participant.person.try(:phone)  %></td>
+		<td><%=participant.person.try(:email)  %></td>
+		<td><%=participant.comming_from  %></td>
 		<td><%= link_to raw('<span class="glyphicon glyphicon-trash fa-2x"></span>'), attend_path(participant), method: :delete, data: { confirm: '¿Está seguro?'} %></td>
 	</tr>
 	<% end %>
 </table>
 <% end %>
+
 
 </div>
