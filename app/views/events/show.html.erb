@@ -71,7 +71,7 @@
 
 	<% @participants.each do |participant|%>
 	<tr>
-		<td><%=participant.person.try(:name) + ' ' + participant.person.try(:last_name) %></td>
+		<td><%=participant.person.try(:name)  %></td>
 		<td><%=participant.person.try(:phone)  %></td>
 		<td><%=participant.person.try(:email)  %></td>
 		<td><%=participant.comming_from  %></td>
