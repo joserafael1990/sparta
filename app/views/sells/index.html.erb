@@ -1,0 +1,29 @@
+<div class="col-xs-12 col-sm-8">
+	<br>
+	<h2>Ventas</h2> <br>
+	<%= render 'search' %>
+
+
+
+	<table style= "width: 100%;">
+			<tr>
+				<th>Cliente</th>
+				<th>Vendedor</th>
+				<th>Fecha</th>
+				<th colspan="2">Acciones</th>
+			</tr>
+			<br>
+			<% @sells.each do |sell|%>
+			<tr>
+				<td><%= sell.client.name+' '+ sell.client.last_name%></td>
+				<td><%= sell.seller.name+' '+ sell.seller.last_name%></td>
+				<td><%= sell.created_at.in_time_zone("Mexico City") %></td>
+				<td><%= link_to raw('<span class="glyphicon glyphicon-eye-open fa-2x"></span>'), sell_path(sell) %></td>
+				<td><%= link_to raw('<span class="glyphicon glyphicon-edit fa-2x"></span>'), edit_sell_path(sell) %></td>
+				<td><%= link_to raw('<span class="glyphicon glyphicon-trash fa-2x"></span>'), sell_path(sell), method: :delete, data: { confirm: '¿Está seguro?'} %></td>
+			</tr>
+			<% end %>
+		</table>
+		<br><br>
+		<p><%= paginate @sells %></p>
+	</div>

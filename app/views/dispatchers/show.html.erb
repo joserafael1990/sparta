@@ -15,6 +15,7 @@
 		<tr>
 			<th>Artículo</th>
 			<th>Cantidad</th>
+			<th>Última actualización</th>
 			<th colspan="2">Acciones</th>
 		</tr>
 
@@ -22,6 +23,7 @@
 		<tr>
 			<td><%= article.product.name %> </td>
 			<td > <%= article.quantity %> </td>
+			<td > <%= article.updated_at.in_time_zone("Mexico City")  %> </td>
 			<td><%= link_to raw('<span class="glyphicon glyphicon-edit fa-2x"></span>'), edit_dispatcher_path(article) %>
 				<%= link_to raw('<span class="glyphicon glyphicon-trash fa-2x"></span>'), dispatcher_path(article), method: :delete, data: { confirm: '¿Está seguro?'} %>
 			</td>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170405185506) do
+ActiveRecord::Schema.define(version: 20170423185841) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,16 @@ ActiveRecord::Schema.define(version: 20170405185506) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "details", force: :cascade do |t|
+    t.integer  "quantity"
+    t.integer  "sell_id"
+    t.integer  "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_details_on_product_id", using: :btree
+    t.index ["sell_id"], name: "index_details_on_sell_id", using: :btree
   end
 
   create_table "dispatchers", force: :cascade do |t|
@@ -109,6 +119,15 @@ ActiveRecord::Schema.define(version: 20170405185506) do
     t.integer  "cost"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+  end
+
+  create_table "sells", force: :cascade do |t|
+    t.integer  "client_id"
+    t.integer  "seller_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_sells_on_client_id", using: :btree
+    t.index ["seller_id"], name: "index_sells_on_id", using: :btree
   end
 
   create_table "states", force: :cascade do |t|

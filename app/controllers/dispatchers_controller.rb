@@ -39,7 +39,7 @@ class DispatchersController < ApplicationController
 
 	def update
 		if @dispatcher.update(dispatcher_params)
-			redirect_to @dispatcher
+			redirect_to dispatchers_path
 		else
 			render 'edit'
 		end

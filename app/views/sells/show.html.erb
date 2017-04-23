@@ -1,0 +1,62 @@
+<div class="col-xs-12 col-md-8">
+	<br>
+	<h2>Ver venta</h2> 
+
+	<p>
+		<br>
+		<div class="col-xs-12 col-sm-4 col-md-4">
+			<strong>Cliente por:</strong>
+			<%= @sell.client.name + ' ' + @sell.client.last_name%>
+		</div>
+		<div class="col-xs-12 col-sm-4 col-md-4">
+			<strong>Vendedor:</strong>
+			<%= @sell.seller.name + ' ' + @sell.seller.last_name%>
+		</div>
+	</p>
+	<p>
+		<br>
+		<div class="col-xs-12 col-sm-4 col-md-4">
+			<strong>Fecha:</strong>
+			<%= @sell.updated_at.in_time_zone("Mexico City")%>
+		</div>
+	</p>
+	<br>
+	<br>
+	<%= link_to 'Atrás', sells_path, {:class=>"btn btn-link"} %> | <%= link_to 'Editar', edit_sell_path(@sell), {:class=>"btn btn-link"} %>
+	<br>
+	<%= link_to 'Añadir a la bolsa', new_detail_path(:sell_id => @sell.id), {:class=>"btn btn-info"} %>
+
+
+
+
+	<table style= "width: 100%;">
+		<tr>
+			<th>Artículo</th>
+			<th>cantidad</th>
+			<th>Precio unitario</th>
+			<th>Importe</th>
+			<th colspan="2">Acciones</th>
+		</tr>
+
+		<% total = 0 %>
+		<% @details.each do |detail|%>
+		<tr>
+			<td><%=detail.product.try(:name) %></td>
+			<td><%=detail.quantity %></td>
+			<td><%=detail.product.try(:price)  %></td>
+			<td><%=detail.product.try(:price)*detail.quantity %></td>
+			<% total+= detail.product.try(:price)*detail.quantity %>
+			<td><%= link_to raw('<span class="glyphicon glyphicon-trash fa-2x"></span>'), detail_path(detail), method: :delete, data: { confirm: '¿Está seguro?'} %></td>
+		</tr>
+		<% end %>
+		<tr>
+			<td></td>
+			<td></td>
+			<td> <strong>Total:</strong></td>
+			<td> <%= total %></td>
+		</tr>
+	</table>
+
+
+
+</div>

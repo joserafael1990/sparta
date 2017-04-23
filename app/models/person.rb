@@ -7,6 +7,9 @@ class Person < ApplicationRecord
   has_many :instructor_courses, :class_name => 'Event', :foreign_key => 'instructor_id'
   has_many :host_courses, :class_name => 'Event', :foreign_key => 'host_id'
 
+  has_many :seller_sells, :class_name => 'Sell', :foreign_key => 'seller_id'
+  has_many :client_sells, :class_name => 'Sell', :foreign_key => 'client_id'
+
   has_many :attends
   has_many :events, through: :attends
   has_many :catalogs, through: :events

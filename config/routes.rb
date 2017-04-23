@@ -15,10 +15,12 @@ Rails.application.routes.draw do
     resources :cities
     resources :events
     resources :countries
+    resources :details
     resources :dispatchers
     resources :payments
     resources :people
     resources :products
+    resources :sells
     resources :states
 
     resources :admin

@@ -7,7 +7,7 @@ class AttendsController < ApplicationController
     @attend = Attend.new(attend_params)
 
     if @attend.save
-      redirect_to events_path
+      redirect_to event_path(@attend.event_id)
     else
       render 'new'
     end
@@ -15,7 +15,7 @@ class AttendsController < ApplicationController
 
   def destroy
     @attend.destroy
-    redirect_to events_path
+    redirect_to event_path(@attend.event_id)
   end
 
   def edit

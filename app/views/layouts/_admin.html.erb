@@ -27,7 +27,8 @@
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Inventario  <span class="caret"></span></a>
 				<ul class="dropdown-menu"> 
 					<li class="<%= 'active' if params[:controller] == 'products' %>"> <%= link_to 'Productos', products_path %></li>
-					<li class="<%= 'active' if params[:controller] == 'dispatchers' %>"> <%= link_to 'Asignaciones', dispatchers_path %></li>      
+					<li class="<%= 'active' if params[:controller] == 'dispatchers' %>"> <%= link_to 'Asignaciones', dispatchers_path %></li>
+					<li class="<%= 'active' if params[:controller] == 'sells' %>"> <%= link_to 'Vender', sells_path %></li>      
 				</ul>   
 			</li>
 		</ul>
