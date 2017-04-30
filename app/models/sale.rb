@@ -1,4 +1,4 @@
-class Sell < ApplicationRecord
+class Sale < ApplicationRecord
 	belongs_to :client, :class_name => 'Person'
 	belongs_to :seller, :class_name => 'Person'
 

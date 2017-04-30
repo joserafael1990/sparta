@@ -1,0 +1,96 @@
+<div class="col-xs-12 col-md-8">
+	<%= wicked_pdf_image_tag "logo header.png" %>
+
+	<br>
+	<h2>Ticket de venta <%= @sale.id %></h2> 
+
+	<p>
+		<br>
+		<div class="col-xs-12 col-sm-4 col-md-4">
+			<strong>Nombre:</strong>
+			<%= @sale.client.name + ' ' + @sale.client.last_name%>
+		</div>
+		<p>
+			<div class="col-xs-12 col-sm-4 col-md-4">
+				<strong>Dirección:</strong>
+				<%= @sale.client.address + ' , ' + @sale.client.neighborhood + ' , ' + @sale.client.delegation    + ' , ' + @sale.client.zip_code.to_s + ' , ' +  @sale.client.city.name + ' , ' + @sale.client.city.state.name + ' , ' + @sale.client.city.state.country.name%>
+			</div>
+		</p>
+		<p>
+			<div class="col-xs-12 col-sm-4 col-md-4">
+				<strong>Teléfono:</strong>
+				<%= @sale.client.phone%>
+			</div>
+		</p>
+		<p>
+			<br>
+			<div class="col-xs-12 col-sm-4 col-md-4">
+				<strong>Fecha:</strong>
+				<%= @sale.updated_at.in_time_zone("Mexico City")%>
+			</div>
+		</p>
+		<p>
+			<br>
+		</p>
+		<br>
+
+		<table style= "width: 100%;">
+			<tr>
+				<th style="text-align: left;">Artículo</th>
+				<th style="text-align: left;">Cantidad</th>
+				<th style="text-align: left;">Precio unitario</th>
+				<th style="text-align: left;">Importe</th>
+			</tr>
+
+			<% total = 0 %>
+			<% discount = 0 %>
+			<% @details.each do |detail|%>
+			<tr>
+				<td style="text-align: left;"><%=detail.product.try(:name) %></td>
+				<td style="text-align: left;"><%=detail.quantity %></td>
+				<td style="text-align: left;"><%=detail.product.try(:price)  %></td>
+				<td style="text-align: left;"><%=detail.product.try(:price)*detail.quantity %></td>
+				<% total+= detail.product.try(:price)*detail.quantity %>
+			</tr>
+			<% end %>
+			<tr>
+				<td></td>
+				<td></td>
+				<td> <strong>Subtotal:</strong></td>
+				<td> <%= total %></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td> <strong>Descuento:</strong></td>
+				<td> 
+					<% if total < 1100 %> 
+					<% discount = 0 %>
+					<% elsif total >= 1100 and total < 1400 %>
+					<% discount = 10 %>
+					<% elsif total >= 1400 and total < 2000 %>
+					<% discount = 20 %>
+					<% elsif total >= 2000 and total < 4800 %>
+					<% discount = 30 %>
+					<% elsif total >= 4800 and total < 7500 %>
+					<% discount = 40 %>
+					<% else %>
+					<% discount = 50 %>
+					<% end %>
+					<%= discount %> %
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td> <strong>Total:</strong></td>
+				<td>
+					<% total = total - (total*discount/100) %> 
+					<%= total %>
+				</td>
+			</tr>
+		</table>
+
+
+
+	</div>

@@ -5,8 +5,7 @@ Rails.application.routes.draw do
   get 'cities/find_cities_given_state_id'
   get 'borrowings/find_pendings_given_employee_id'
   get 'catalogs/find_products_given_category_id'
-
-
+  get 'sales/close'
     
     resources :attends  
     resources :borrowings
@@ -20,7 +19,7 @@ Rails.application.routes.draw do
     resources :payments
     resources :people
     resources :products
-    resources :sells
+    resources :sales
     resources :states
 
     resources :admin

@@ -6,7 +6,7 @@ class DetailsController < ApplicationController
  		@detail = Detail.new(detail_params)
 
  		if @detail.save
- 			redirect_to sell_path(@detail.sell_id)
+ 			redirect_to sale_path(@detail.sale_id)
  		else
  			render 'new'
  		end
@@ -14,7 +14,7 @@ class DetailsController < ApplicationController
 
  	def destroy
  		@detail.destroy	
- 		redirect_to  sell_path(@detail.sell_id)
+ 		redirect_to  sale_path(@detail.sale_id)
  	end
 
  	def edit
@@ -39,7 +39,7 @@ class DetailsController < ApplicationController
 
 	def update
 		if @detail.update(detail_params)
-			redirect_to @detail
+			redirect_to sale_path(@detail.sale_id)
 		else
 			render 'edit'
 		end
@@ -49,7 +49,7 @@ class DetailsController < ApplicationController
 
 	protected
 	def detail_params
-		params.require(:detail).permit(:product_id, :quantity,:sell_id)
+		params.require(:detail).permit(:product_id, :quantity,:sale_id)
 	end
 
 end

@@ -2,7 +2,7 @@
 <% if @detail.errors.any? %>
 <div id="error_explanation">
 	<h2>
-		<%= pluralize(@detail.errors.count, "error") %> No se puede registrar el participante:
+		<%= pluralize(@detail.errors.count, "error") %> No se puede registrar el importe:
 	</h2>
 	<ul>
 		<% @detail.errors.full_messages.each do |msg| %>
@@ -24,11 +24,12 @@
 			<div class="form-group">
 				<%= f.label 'Cantidad', class: "col-sm-2 control-label" %>
 				<div class="col-sm-5">
-					<%= f.number_field :quantity, autofocus: true, class: "form-control", placeholder: 'Canitdad' %>
+					<%= f.number_field :quantity, autofocus: true, class: "form-control", placeholder: 'Canitdad', min: 1	 %>
 				</div>
 			</div>
 			<div class="form-group">
-				<%= f.text_field :sell_id, value: params[:sell_id],  class: "form-control hidden" %>
+				<%= f.text_field :sale_id, value: params[:sale_id],  class: "form-control hidden" if @detail.new_record? %>
+				<%= f.text_field :sale_id, value: @detail.sale_id,  class: "form-control hidden"   if @detail.persisted? %>
 			</div>
 			<div class="form-group">
 				<div class="col-sm-offset-4 col-sm-10">
