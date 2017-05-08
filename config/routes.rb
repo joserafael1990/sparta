@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get 'borrowings/find_pendings_given_employee_id'
   get 'catalogs/find_products_given_category_id'
   get 'sales/close'
+  get 'sales/send_ticket'
+  get 'user_mailer/send_ticket'
     
     resources :attends  
     resources :borrowings

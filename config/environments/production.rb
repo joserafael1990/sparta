@@ -28,14 +28,13 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: '138.197.127.1', port: 3000 }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-     :address              => "smtp.zoho.com",
+     :address              => "smtp.gmail.com",
      :port                 => 587,
-     :domain               => 'home-b.co',
-     :user_name            => 'info@home-b.co',
+     :domain               => 'gmail.com',
+     :user_name            => 'joserafaelgarciacastro@gmail.com',
      :password             => 'Jr18990787',
      :authentication       => :plain,
      :enable_starttls_auto => true  }
-
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.

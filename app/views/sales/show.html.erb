@@ -46,7 +46,7 @@
 			<th>Precio unitario</th>
 			<th>Importe</th>
 			<% if @sale.closed == false %>
-				<th colspan="2">Acciones</th>
+			<th colspan="2">Acciones</th>
 			<% end %>
 		</tr>
 
@@ -91,9 +91,9 @@
 				<% discount = 50 %>
 				<% end %>
 				<% @details.each do |detail|%>
-					<% if  detail.product.try(:max_discount) <= discount %>
-						<% total_discount = total_discount + ( detail.product.try(:price)*detail.quantity * detail.product.try(:max_discount) /100 ) %>
-					<% end %>
+				<% if  detail.product.try(:max_discount) <= discount %>
+				<% total_discount = total_discount + ( detail.product.try(:price)*detail.quantity * detail.product.try(:max_discount) /100 ) %>
+				<% end %>
 				<% end %>
 				<%= total_discount %>
 			</td>
@@ -112,10 +112,15 @@
 			</td>
 			<td>
 				<% if @sale.closed == false  %>
-					<%= link_to 'Cerrar la venta', sales_close_path(:id => @sale.id), {:class => "btn btn-primary"} %>
+				<%= link_to 'Cerrar la venta', sales_close_path(:id => @sale.id), {:class => "btn btn-primary"} %>
 
 				<% else %>
-					<%= button_to "Imprimir", sale_path(format: "pdf"), :class => "btn btn-primary",:method => :get,target: '_blank'  %>
+				<td>
+					<%= button_to "Imprimir", sale_path(format: "pdf"), :class => "btn btn-primary",:method => :get,target: '_blank'  %>  
+				</td>
+				<td>
+					<%= link_to "Enviar correo", sales_send_ticket_path(:id => @sale.id, :email => @sale.client.email), :class => "btn btn-primary"  %>
+				</td>	
 				<% end %>
 				
 			</td>

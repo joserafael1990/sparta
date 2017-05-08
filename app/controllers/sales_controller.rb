@@ -1,6 +1,6 @@
 class SalesController < ApplicationController
 	before_action :authenticate_user!, except:  [:show, :index]
-	before_action :set_sale, except: [:index, :new, :create, :close]
+	before_action :set_sale, except: [:index, :new, :create, :close, :send_ticket]
 
 	def create
 		@sale = Sale.new(sale_params)
@@ -43,6 +43,14 @@ class SalesController < ApplicationController
 		@sale = Sale.new
 	end
 
+	def send_ticket
+		@sale = Sale.find(params[:id])
+		UserMailer.send_ticket(params[:email] , params[:id]).deliver_now
+		respond_to do |format|
+			format.html { redirect_to(@sale, notice: 'Email enviado con exito.') }
+		end
+	end
+
 	def set_sale
 		@sale = Sale.find(params[:id])
 	end
@@ -53,7 +61,7 @@ class SalesController < ApplicationController
 		respond_to do |format|
 			format.html
 			format.pdf do
-				render pdf: "factura" , :template => 'sales/print.html.erb', :encoding => "utf8"
+				render pdf: "factura" , :template => 'sales/_print.html.erb', :encoding => "utf8"
 			end
 		end
 	end
@@ -64,7 +72,7 @@ class SalesController < ApplicationController
 		respond_to do |format|
 			format.html
 			format.pdf do
-				render pdf: "factura" , :template => 'sales/show.html.erb', :encoding => "utf8"
+				render pdf: "factura" , :encoding => "utf8"
 			end
 		end
 	end
