@@ -35,8 +35,11 @@
 <body>
 	<% if user_signed_in? && current_user.active == true %>
 
-		<% if current_user.admin == true%>
+		<% if current_user.type == 'admin'%>
 			<%= render 'layouts/admin' %>
+		<% elsei %>
+		<% elsif  current_user.type == 'vendor'%>
+			<%= render 'layouts/vendor' %>
 		<% else %>
 			<%= render 'layouts/no_admin' %>
 		<% end %>

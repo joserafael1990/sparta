@@ -37,6 +37,7 @@ class SalesController < ApplicationController
 	def index
 		@search = Sale.ransack(params[:q])
 		@sales = @search.result.page(params[:page]).per(20).order(:created_at)
+		@search.build_condition
 	end
 
 	def new
@@ -61,7 +62,7 @@ class SalesController < ApplicationController
 		respond_to do |format|
 			format.html
 			format.pdf do
-				render pdf: "factura" , :template => 'sales/_print.html.erb', :encoding => "utf8"
+				render pdf: "factura" , :template => 'sales/print.html.erb', :encoding => "utf8"
 			end
 		end
 	end
@@ -89,7 +90,7 @@ class SalesController < ApplicationController
 
 	protected
 	def sale_params
-		params.require(:sale).permit(:seller_id, :client_id, :closed)
+		params.require(:sale).permit(:seller_id, :client_id, :closed, :bill_request)
 	end
 
 end
