@@ -1,6 +1,6 @@
 class CreateSells < ActiveRecord::Migration[5.0]
   def change
-    create_table :sells do |t|
+    create_table :sales do |t|
     t.integer  "client_id"
     t.integer  "seller_id"
     t.datetime "created_at",    null: false
