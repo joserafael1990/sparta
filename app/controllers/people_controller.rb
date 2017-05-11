@@ -40,7 +40,7 @@ class PeopleController < ApplicationController
 
 	def index
 		@search = Person.ransack(params[:q])
-		@people = @search.result.page(params[:page]).per(20)   
+		@people = @search.result.page(params[:page]).per(20).order(:name)
 		@search.build_condition
 	end
 
