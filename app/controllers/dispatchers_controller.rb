@@ -6,7 +6,7 @@ class DispatchersController < ApplicationController
  		@dispatcher = Dispatcher.new(dispatcher_params)
 
  		if @dispatcher.save
- 			redirect_to dispatchers_path
+ 			redirect_to @dispatcher
  		else
  			render 'new'
  		end
@@ -33,7 +33,7 @@ class DispatchersController < ApplicationController
 	end
 
 	def show
-		@articles = Dispatcher.search_for_person_id(params[:id])
+		@articles = Dispatcher.includes(:product).order("products.name asc").search_for_person_id(params[:id])
 		@person = Person.find(params[:id])
 	end
 

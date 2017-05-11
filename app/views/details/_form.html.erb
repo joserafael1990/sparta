@@ -17,7 +17,7 @@
 			<div class="form-group">
 				<%= f.label 'Producto', class: "col-sm-2 control-label"  %>
 				<div class="col-sm-5">
-					<%= f.collection_select :product_id, Product.order(:name), :id, :name, {prompt: "Seleccione el producto"},  class: "form-control"  %>
+					<%= f.collection_select :product_id, Dispatcher.select("*").joins(:product).order("products.name asc").where(:person_id => Person.where(:email => current_user.email).pluck(:id).first.to_i), :product_id, :name, {prompt: "Seleccione el producto"},  class: "form-control"  %>
 				</div>
 			</div>
 			<br>

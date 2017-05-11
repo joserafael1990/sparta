@@ -24,6 +24,7 @@ class EventsController < ApplicationController
 	def index
 		@search = Event.ransack(params[:q])
 		@events = @search.result.page(params[:page]).per(20).order(:event_date)
+		@search.build_condition
 	end
 
 	def new
@@ -36,7 +37,7 @@ class EventsController < ApplicationController
 
 	def show
 		@total = Attend.where(:event_id => @event).count
-		@participants = Attend.where(:event_id => @event.id)
+		@participants = Attend.includes(:person).order("people.name asc").where(:event_id => @event.id)
 	end
 
 	def update

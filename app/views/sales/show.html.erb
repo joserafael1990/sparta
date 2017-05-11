@@ -34,6 +34,18 @@
 	</p>
 	<p>
 		<br>
+		<div class="col-xs-12 col-sm-4 col-md-4">
+			<strong>Nombre fiscal:</strong>
+			<%= @sale.business_name %>
+		</div>
+		<div class="col-xs-12 col-sm-4 col-md-4">
+			<strong>Domicilio fiscal:</strong>
+			<%= @sale.business_address %>
+		</div>
+		<div class="col-xs-12 col-sm-4 col-md-4">
+			<strong>RFC:</strong>
+			<%= @sale.rfc %>
+		</div>
 	</p>
 	<br>
 	<h3>Productos</h3>
@@ -122,7 +134,9 @@
 					<%= button_to "Imprimir", sale_path(format: "pdf"), :class => "btn btn-primary",:method => :get,target: '_blank'  %>  
 				</td>
 				<td>
+					<% if @sale.client.email != "" %>
 					<%= link_to "Enviar correo", sales_send_ticket_path(:id => @sale.id, :email => @sale.client.email), :class => "btn btn-primary"  %>
+					<% end %>
 				</td>	
 				<% end %>
 				

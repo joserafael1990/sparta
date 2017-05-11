@@ -57,8 +57,8 @@ class SalesController < ApplicationController
 	end
 
 	def show
-		@details = Detail.where(:sale_id => @sale.id)
-
+		@details = Detail.includes(:product).order("products.name asc").where(:sale_id => @sale.id)
+		
 		respond_to do |format|
 			format.html
 			format.pdf do
@@ -90,7 +90,7 @@ class SalesController < ApplicationController
 
 	protected
 	def sale_params
-		params.require(:sale).permit(:seller_id, :client_id, :closed, :bill_request)
+		params.require(:sale).permit(:seller_id, :client_id, :closed, :bill_request, :rfc, :business_address, :business_name)
 	end
 
 end

@@ -64,7 +64,7 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<%= f.label 'Dirección', class: "col-sm-2 control-label", style: "text-align: left;"  %>
+				<%= f.label 'Calle y número', class: "col-sm-2 control-label", style: "text-align: left;"  %>
 				<div class="col-sm-8">
 					<%= f.text_field :address, autofocus: true, class: "form-control", placeholder: 'Ingrese dirección'  %>
 				</div>
@@ -109,6 +109,7 @@
 					<%= f.number_field :zip_code, autofocus: true, class: "form-control", placeholder: 'Ingrese el código postal'  %>
 				</div>
 			</div>
+			<% if current_user.privilege != 'vendor'%>
 			<div class="form-group">
 				<%= f.label 'Registrar como',  class: "col-sm-2 control-label", style: "text-align: center; padding-top: 40px;" %>
 				<div class="col-sm-8">
@@ -123,6 +124,7 @@
 					<%= f.check_box :patient %> Paciente
 				</div>
 			</div>
+			<% end %>
 			<div class="form-group">
 				<div class="col-sm-offset-4 col-sm-10">
 					<%= f.submit "Enviar", class: "btn btn-primary btn-lg"  %>

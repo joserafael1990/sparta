@@ -34,7 +34,7 @@
 			<div class="form-group" >
 				<%= f.label 'Fecha',  class: "col-sm-2 control-label", style: "text-align: left;" %>
 				<div class="col-sm-8" style='padding-top: 7px;'>
-					<%= f.date_select :event_date, autofocus: true, :order => [:day, :month, :year],     :start_year => Date.today.year - 1, :end_year => Date.today.year + 1, :prompt => { :day => 'Día', :month => 'Mes', :year => 'Año' }  %>
+					<%= f.date_select :event_date, autofocus: true, :order => [:day, :month, :year],     :start_year => 2006, :end_year => Date.today.year + 1, :prompt => { :day => 'Día', :month => 'Mes', :year => 'Año' }  %>
 				</div>
 			</div>
 			<div class="form-group">

@@ -1,5 +1,12 @@
-<%= search_form_for @search do |f| %>	
-	<div class="form-group">		
-		<%= link_to 'Nuevo evento', new_event_path, {:class=>"btn btn-info"} %>
-	</div>
+<%= search_form_for @search do |f| %> 
+<%= f.condition_fields do |c| %>  
+<%= render "condition_fields", f: c %>
 <% end %>
+
+
+<%= f.submit "Buscar",  {:class=>"btn btn-default"} %>
+<br>
+<br>
+<%= link_to 'Nuevo evento', new_event_path, {:class=>"btn btn-info"} %>
+<% end %>
+

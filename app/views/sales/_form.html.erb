@@ -1,3 +1,4 @@
+<% javascript 'sales' %>
 <%= form_for @sale  do |f| %>
 <% if @sale.errors.any? %>
 <div id="error_explanation">
@@ -17,7 +18,31 @@
 			<div class="form-group">
 				<%= f.label 'Cliente ', class: "col-sm-2 control-label", style: "text-align: left;"  %>
 				<div class="col-sm-8">
-					<%= f.collection_select :client_id, Person.order(:name, :last_name).where(:client => 1) , :id, :name_with_last_name, {prompt: "Seleccione la persona"},  class: "form-control"%>
+					<%= f.collection_select :client_id, Person.order(:name, :last_name).where(:client => 1) , :id, :name_with_last_name, {prompt: "Seleccione la persona"},  class: "form-control",  id: 'client_list'%>
+				</div>
+			</div>
+			<div class="form-group">
+				<%= f.label 'Ubicación ', class: "col-sm-2 control-label", style: "text-align: left;"  %>
+				<div class="col-sm-8">
+					<%= f.label 'En espera', style: "text-align: left;", id: 'location'  %>
+				</div>
+			</div>
+			<div class="form-group">
+				<%= f.label 'Ciudad ', class: "col-sm-2 control-label", style: "text-align: left;"  %>
+				<div class="col-sm-8">
+					<%= f.label 'En espera', style: "text-align: left;", id: 'city'  %>
+				</div>
+			</div>
+			<div class="form-group">
+				<%= f.label 'Estado ', class: "col-sm-2 control-label", style: "text-align: left;"  %>
+				<div class="col-sm-8">
+					<%= f.label 'En espera', style: "text-align: left;", id: 'state'  %>
+				</div>
+			</div>
+			<div class="form-group">
+				<%= f.label 'País ', class: "col-sm-2 control-label", style: "text-align: left;"  %>
+				<div class="col-sm-8">
+					<%= f.label 'En espera', style: "text-align: left;", id: 'country'  %>
 				</div>
 			</div>
 			<%= f.text_field :seller_id, :value => Person.where(:email => current_user.email).pluck(:id).first.to_i,  class: "form-control hidden"%>
@@ -27,10 +52,32 @@
 					<%= f.select(:bill_request, ['No', 'Pendiente', 'Procesada'], {include_blank: "Seleccione"}, { :class => 'form-control' }) %>
 				</div>
 			</div>
-		</div>
-		<div class="form-group">
-			<div class="col-sm-offset-4 col-sm-10">
-				<%= f.submit "Enviar", class: "btn btn-primary btn-lg"  %>
+
+			<h3>Datos de facturación</h3>
+			<div class="form-group">
+				<%= f.label 'RFC',  class: "col-sm-2 control-label", style: "text-align: left;" %>
+				<div class="col-sm-8">
+					<%= f.text_field :rfc, autofocus: true, class: "form-control", placeholder: 'Ingrese el nombre de la colonia'  %>
+				</div>
+			</div>
+			<div class="form-group">
+				<%= f.label 'Nombre fiscal o Moral',  class: "col-sm-2 control-label", style: "text-align: left;" %>
+				<div class="col-sm-8">
+					<%= f.text_field :business_name, autofocus: true, class: "form-control", placeholder: 'Ingrese el nombre de fiscal o moral'  %>
+				</div>
+			</div>
+			<div class="form-group">
+				<%= f.label 'Dirección fiscal',  class: "col-sm-2 control-label", style: "text-align: left;" %>
+				<div class="col-sm-8">
+					<%= f.text_field :business_address, autofocus: true, class: "form-control", placeholder: 'Ingrese el domicilio fiscal'  %>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-2">
+				</div>
+				<div class="col-sm-2">
+					<%= f.submit "Enviar", class: "btn btn-primary btn-lg"  %>
+				</div>
 			</div>
 		</div>
 	</div>
