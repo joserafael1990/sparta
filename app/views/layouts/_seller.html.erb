@@ -7,5 +7,6 @@
 		<ul class="nav nav-pills nav-stacked" >
 			<li class="<%= 'active' if params[:controller] == 'sales' %>"> <%= link_to 'Vender', sales_path %></li>
 			<li class="<%= 'active' if params[:controller] == 'products' %>"> <%= link_to 'Consultar precios', products_path %></li>      
+			<li class="<%= 'active' if params[:controller] == 'dispatchers' %>"> <%= link_to 'Revisar mi inventario', dispatcher_path(Person.where(:email => current_user.email).pluck(:id).first.to_i) %></li>      
 		</ul>
 	</div>

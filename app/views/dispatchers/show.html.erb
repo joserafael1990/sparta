@@ -5,7 +5,9 @@
 		<strong>Nombre:</strong>
 		<%= @person.name + ' ' + @person.last_name %> 
 		<br>
+		<% if current_user.privilege == 'admin' %>
 		<%= link_to 'Asignar inventario', new_dispatcher_path, {:class=>"btn btn-info"} %>
+		<% end %>
 	</p>
 
 	<h3> Unidades totales:
@@ -16,7 +18,9 @@
 			<th>Artículo</th>
 			<th>Cantidad</th>
 			<th>Última actualización</th>
-			<th colspan="2">Acciones</th>
+			<% if current_user.privilege == 'admin' %>
+				<th colspan="2">Acciones</th>
+			<% end %>
 		</tr>
 
 		<% @articles.each do |article|%>
@@ -24,9 +28,11 @@
 			<td><%= article.product.name %> </td>
 			<td > <%= article.quantity %> </td>
 			<td > <%= article.updated_at.in_time_zone("Mexico City")  %> </td>
+			<% if current_user.privilege == 'admin' %>
 			<td><%= link_to raw('<span class="glyphicon glyphicon-edit fa-2x"></span>'), edit_dispatcher_path(article) %>
 				<%= link_to raw('<span class="glyphicon glyphicon-trash fa-2x"></span>'), dispatcher_path(article), method: :delete, data: { confirm: '¿Está seguro?'} %>
 			</td>
+			<% end %>
 		</tr>
 		<% end %>
 
