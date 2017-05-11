@@ -6,12 +6,18 @@
 		<table style= "width: 100%;">
 			<tr>
 				<th>Nombre</th>
+				<th>Precio</th>
+				<th>Descuento</th>
+				<th>Peso</th>
 				<th colspan="2">Acciones</th>
 			</tr>
 
 			<% @products.each do |product|%>
 			<tr>
 				<td> <%= product.name %></td>
+				<td> <%= product.price %> MXN</td>
+				<td> <%= product.max_discount %> % </td>
+				<td> <%= product.weight %> gr </td>
 				<td><%= link_to raw('<span class="glyphicon glyphicon-eye-open fa-2x"></span>'), product_path(product) %></td>
 				<td><%= link_to raw('<span class="glyphicon glyphicon-edit fa-2x"></span>'), edit_product_path(product) %></td>
 				<td><%= link_to raw('<span class="glyphicon glyphicon-trash fa-2x"></span>'), product_path(product), method: :delete, data: { confirm: '¿Está seguro?'} %></td>

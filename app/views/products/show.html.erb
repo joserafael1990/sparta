@@ -23,6 +23,14 @@
 		</div>
 	</p>
 	<p>
+		<br>
+		<div class="col-xs-12 col-sm-4 col-md-4">
+			<strong>Peso:</strong>
+			<%= @product.weight %>
+		</div>
+		<br>
+	</p>
+	<p>
 		<%= link_to 'Atrás', products_path, {:class=>"btn btn-link"} %> | <%= link_to 'Editar', edit_product_path(@product), {:class=>"btn btn-link"} %>
 	</p>
 </div>

@@ -63,6 +63,7 @@
 		<% total = 0 %>
 		<% discount = 0 %>
 		<% total_discount = 0 %>
+		<% weight = 0 %>
 		<% @details.each do |detail|%>
 		<tr>
 			<td><%=detail.product.try(:name) %></td>
@@ -70,6 +71,7 @@
 			<td><%=detail.product.try(:price)  %></td>
 			<td><%=detail.product.try(:price)*detail.quantity %></td>
 			<% total+= detail.product.try(:price)*detail.quantity %>
+			<% weight += (detail.product.try(:weight)*detail.quantity) %>
 			<% if @sale.closed == false %>
 			<td><%= link_to raw('<span class="glyphicon glyphicon-edit fa-2x"></span>'), edit_detail_path(detail) %></td>
 			<td><%= link_to raw('<span class="glyphicon glyphicon-trash fa-2x"></span>'), detail_path(detail), method: :delete, data: { confirm: '¿Está seguro?'} %></td>
@@ -143,7 +145,8 @@
 			</td>
 		</tr>
 	</table>
-
+	<p style="color: red;">El peso estimado del paquete es: <%= weight + 200%> gramos</p>
+	
 
 
 </div>
