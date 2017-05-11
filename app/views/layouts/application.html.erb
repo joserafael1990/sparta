@@ -37,8 +37,8 @@
 
 		<% if current_user.privilege == 'admin'%>
 			<%= render 'layouts/admin' %>
-		<% elsif  current_user.privilege == 'vendor'%>
-			<%= render 'layouts/vendor' %>
+		<% elsif  current_user.privilege == 'seller'%>
+			<%= render 'layouts/seller' %>
 		<% else %>
 			<%= render 'layouts/no_admin' %>
 		<% end %>

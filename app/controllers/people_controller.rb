@@ -4,11 +4,11 @@ class PeopleController < ApplicationController
 
 	def create
 		@person = Person.new(person_params)
- 		if current_user.privilege == 'vendor'
+ 		if current_user.privilege == 'seller'
  			@person.client = 1
  		end
 		if @person.save
-			if current_user.privilege == 'vendor'
+			if current_user.privilege == 'seller'
 				redirect_to sales_path
 			else
 				redirect_to @person

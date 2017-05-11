@@ -13,13 +13,13 @@
 			<th>Status</th>
 			<th>Solicitud de factura</th>
 			<th colspan="2">Acciones</th>
-			<% if current_user.privilege != 'vendor' %>
+			<% if current_user.privilege != 'seller' %>
 			<th colspan="2">Acciones</th>
 			<% end %>
 		</tr>
 		<br>
 		<% @sales.each do |sale|%>
-			<% if current_user.privilege != 'vendor' %>
+			<% if current_user.privilege != 'seller' %>
 			<tr>
 				<td><%= sale.client.name+' '+ sale.client.last_name%></td>
 				<td><%= sale.seller.name+' '+ sale.seller.last_name%></td>
