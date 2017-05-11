@@ -14,7 +14,7 @@ class DispatchersController < ApplicationController
 
  	def destroy
  		@dispatcher.destroy	
- 		redirect_to dispatchers_path
+ 		redirect_to  dispatcher_path(@dispatcher.person_id)
  	end
 
  	def edit
