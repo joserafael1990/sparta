@@ -62,7 +62,7 @@ class SalesController < ApplicationController
 		respond_to do |format|
 			format.html
 			format.pdf do
-				render pdf: "factura" , :template => 'sales/print.html.erb', :encoding => "utf8"
+				render pdf: "factura" , wkhtmltopdf: '/usr/bin/wkhtmltopdf' dísposition: 'inline', :template => 'sales/print.html.erb', :encoding => "utf8"
 			end
 		end
 	end
