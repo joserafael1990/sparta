@@ -126,11 +126,11 @@
 
 	<% @courses.each do |course|%>
 	<tr>
-		<td><%= course.catalog.try(:name)  %></td>
-		<td><%=course.event.try(:event_date)   %></td>
-		<% @armar =  '/assets/flags/'+ course.event.city.state.country.try(:name) %>
-		<td><%= image_tag(@armar)%> <%=course.event.city.try(:name)%></td>
-		<td><%=course.event.instructor.try(:name) + ' ' + course.event.instructor.try(:last_name)  %></td>
+		<td><%=course.category.try(:name) + ': ' + course.catalog.try(:name)  %></td>
+		<td><%=course.event.event_date  %></td>
+		<% @armar =  '/assets/flags/'+ course.event.city.state.country.name %>
+		<td><%= image_tag(@armar)%> <%=course.event.city.name%></td>
+		<td><%=course.event.instructor.name + ' ' + course.event.instructor.last_name  %></td>
 		<td><%= link_to raw('<span class="glyphicon glyphicon-trash fa-2x"></span>'), attend_path(course), method: :delete, data: { confirm: '¿Está seguro?'} %></td>
 	</tr>
 	<% end %>
