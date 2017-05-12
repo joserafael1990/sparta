@@ -5,12 +5,27 @@
 	<p>
 		<br>
 		<div class="col-xs-12 col-sm-4 col-md-4">
-			<strong>Cliente por:</strong>
+			<strong>Cliente:</strong>
 			<%= @sale.client.name + ' ' + @sale.client.last_name%>
 		</div>
 		<div class="col-xs-12 col-sm-4 col-md-4">
 			<strong>Vendedor:</strong>
 			<%= @sale.seller.name + ' ' + @sale.seller.last_name%>
+		</div>
+	</p>
+	<p>
+		<br>
+		<div class="col-xs-12 col-sm-4 col-md-4">
+			<strong>Teléfono:</strong>
+			<%= @sale.client.phone %>
+		</div>
+		<div class="col-xs-12 col-sm-4 col-md-4">
+			<strong>Email:</strong>
+			<%= @sale.client.email%>
+		</div>
+		<div class="col-xs-12 col-sm-4 col-md-4">
+			<strong>Dirección:</strong>
+			<%= @sale.client.address + ' , ' + @sale.client.neighborhood + ' , ' + @sale.client.delegation    + ' , ' + @sale.client.zip_code.to_s + ' , ' +  @sale.client.city.name + ' , ' + @sale.client.city.state.name + ' , ' + @sale.client.city.state.country.name%>
 		</div>
 	</p>
 	<p>
@@ -138,7 +153,7 @@
 				<% end %>
 				<td>
 					<% if @sale.client.email != "" %>
-							<%= link_to "Enviar correo", sales_send_ticket_path(:id => @sale.id, :email => @sale.client.email), :class => "btn btn-primary"  %>
+					<%= link_to "Enviar correo", sales_send_ticket_path(:id => @sale.id, :email => @sale.client.email), :class => "btn btn-primary"  %>
 					<% end %>
 				</td>					
 			</td>
