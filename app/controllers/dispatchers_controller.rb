@@ -6,7 +6,7 @@ class DispatchersController < ApplicationController
  		@dispatcher = Dispatcher.new(dispatcher_params)
 
  		if @dispatcher.save
- 			redirect_to @dispatcher
+ 			redirect_to dispatchers_path
  		else
  			render 'new'
  		end
