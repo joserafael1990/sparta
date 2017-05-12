@@ -42,7 +42,7 @@ gem 'ransack', github: 'activerecord-hackery/ransack'
 gem 'kaminari'
 
 #pdf
-gem 'wicked_pdf'
+gem 'wicked_pdf', github: 'mileszs/wicked_pdf'
 gem 'wkhtmltopdf-binary'
 
 group :development, :test do
