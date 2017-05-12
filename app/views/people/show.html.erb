@@ -126,7 +126,7 @@
 
 	<% @courses.each do |course|%>
 	<tr>
-		<td><%=course.category.try(:name) + ': ' + course.catalog.try(:name)  %></td>
+		<td><%=course.category.name + ': ' + course.catalog.name  %></td>
 		<td><%=course.event.event_date  %></td>
 		<% @armar =  '/assets/flags/'+ course.event.city.state.country.name %>
 		<td><%= image_tag(@armar)%> <%=course.event.city.name%></td>
