@@ -44,6 +44,7 @@
 
 			<% total = 0 %>
 			<% discount = 0 %>
+			<% total_discount = 0 %>
 			<% @details.each do |detail|%>
 			<tr>
 				<td style="text-align: left;"><%=detail.product.try(:name) %></td>
