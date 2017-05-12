@@ -16,7 +16,9 @@
 				<td> <%= catalog.category.name %></td>
 				<td><%= link_to raw('<span class="glyphicon glyphicon-eye-open fa-2x"></span>'), catalog_path(catalog) %></td>
 				<td><%= link_to raw('<span class="glyphicon glyphicon-edit fa-2x"></span>'), edit_catalog_path(catalog) %></td>
+				<% if current_user.privilege == 'admin'%>
 				<td><%= link_to raw('<span class="glyphicon glyphicon-trash fa-2x"></span>'), catalog_path(catalog), method: :delete, data: { confirm: '¿Está seguro?'} %></td>
+				<%end %>
 			</tr>
 			<% end %>
 		</table>

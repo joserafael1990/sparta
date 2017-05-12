@@ -135,13 +135,12 @@
 				<td>
 					<%= button_to "Imprimir", sale_path(format: "pdf"), :class => "btn btn-primary",:method => :get,target: '_blank'  %>  
 				</td>
+				<% end %>
 				<td>
 					<% if @sale.client.email != "" %>
-					<%= link_to "Enviar correo", sales_send_ticket_path(:id => @sale.id, :email => @sale.client.email), :class => "btn btn-primary"  %>
+							<%= link_to "Enviar correo", sales_send_ticket_path(:id => @sale.id, :email => @sale.client.email), :class => "btn btn-primary"  %>
 					<% end %>
-				</td>	
-				<% end %>
-				
+				</td>					
 			</td>
 		</tr>
 	</table>

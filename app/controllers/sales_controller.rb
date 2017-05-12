@@ -36,7 +36,7 @@ class SalesController < ApplicationController
 
 	def index
 		@search = Sale.ransack(params[:q])
-		@sales = @search.result.page(params[:page]).per(20).order(:created_at)
+		@sales = @search.result.page(params[:page]).per(20).order(created_at: :desc)
 		@search.build_condition
 	end
 

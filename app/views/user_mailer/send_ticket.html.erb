@@ -2,7 +2,7 @@
 	<img src="http://138.197.127.1:3000/assets/LOGOarmonia.jpg" alt="">
 
 	<br>
-	<h2>Ticket de venta N° <%= @sale.id %></h2> 
+	<h2>Documento N° <%= @sale.id %></h2> 
 
 	<p>
 		<div class="col-xs-12 col-sm-4 col-md-4">
@@ -43,6 +43,7 @@
 
 			<% total = 0 %>
 			<% discount = 0 %>
+			<% total_discount = 0 %>
 			<% @details.each do |detail|%>
 			<tr>
 				<td style="text-align: left;"><%=detail.product.try(:name) %></td>
