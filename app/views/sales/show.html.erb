@@ -5,8 +5,8 @@
 	<p>
 		<br>
 		<div class="col-xs-12 col-sm-4 col-md-4">
-			<strong>Cliente:</strong>
-			<%= @sale.client.name + ' ' + @sale.client.last_name%>
+		</div>
+		<div class="col-xs-12 col-sm-4 col-md-4">
 		</div>
 		<div class="col-xs-12 col-sm-4 col-md-4">
 			<strong>Vendedor:</strong>
@@ -16,6 +16,10 @@
 	<p>
 		<br>
 		<div class="col-xs-12 col-sm-4 col-md-4">
+			<strong>Cliente:</strong>
+			<%= @sale.client.name + ' ' + @sale.client.last_name%>
+		</div>
+		<div class="col-xs-12 col-sm-4 col-md-4">
 			<strong>Teléfono:</strong>
 			<%= @sale.client.phone %>
 		</div>
@@ -23,7 +27,10 @@
 			<strong>Email:</strong>
 			<%= @sale.client.email%>
 		</div>
-		<div class="col-xs-12 col-sm-4 col-md-4">
+	</p>
+	<p>
+		<br>
+		<div class="col-xs-12">
 			<strong>Dirección:</strong>
 			<%= @sale.client.address + ' , ' + @sale.client.neighborhood + ' , ' + @sale.client.delegation    + ' , ' + @sale.client.zip_code.to_s + ' , ' +  @sale.client.city.name + ' , ' + @sale.client.city.state.name + ' , ' + @sale.client.city.state.country.name%>
 		</div>
