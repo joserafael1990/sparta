@@ -45,7 +45,8 @@
 					<%= f.label 'En espera', style: "text-align: left;", id: 'country'  %>
 				</div>
 			</div>
-			<%= f.text_field :seller_id, :value => Person.where(:email => current_user.email).pluck(:id).first.to_i,  class: "form-control hidden"%>
+			<%= f.text_field :seller_id, :value => Person.where(:email => current_user.email).pluck(:id).first.to_i,  class: "form-control hidden" if @sale.new_record?%>
+			<%= f.text_field :seller_id, :value => @sale.seller_id,  class: "form-control hidden" if @sale.persisted?%>
 			<div class="form-group">
 				<%= f.label 'Solicitud de factura ', class: "col-sm-2 control-label", style: "text-align: left;"  %>
 				<div class="col-sm-8">
