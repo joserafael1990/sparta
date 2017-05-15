@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170511190319) do
+ActiveRecord::Schema.define(version: 20170515152554) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -132,6 +132,8 @@ ActiveRecord::Schema.define(version: 20170511190319) do
     t.string   "rfc"
     t.string   "business_address"
     t.string   "business_name"
+    t.decimal  "total"
+    t.string   "observation"
     t.index ["client_id"], name: "index_sales_on_client_id", using: :btree
     t.index ["seller_id"], name: "index_sells_on_id", using: :btree
   end

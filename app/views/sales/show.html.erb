@@ -3,7 +3,6 @@
 	<h2>Ver venta</h2> 
 
 	<p>
-		<br>
 		<div class="col-xs-12 col-sm-4 col-md-4">
 		</div>
 		<div class="col-xs-12 col-sm-4 col-md-4">
@@ -33,6 +32,13 @@
 		<div class="col-xs-12">
 			<strong>Dirección:</strong>
 			<%= @sale.client.address + ' , ' + @sale.client.neighborhood + ' , ' + @sale.client.delegation    + ' , ' + @sale.client.zip_code.to_s + ' , ' +  @sale.client.city.name + ' , ' + @sale.client.city.state.name + ' , ' + @sale.client.city.state.country.name%>
+		</div>
+	</p>
+		<p>
+		<br>
+		<div class="col-xs-12">
+			<strong>Observación:</strong>
+			<%= @sale.observation %>
 		</div>
 	</p>
 	<p>
@@ -151,7 +157,7 @@
 			</td>
 			<td>
 				<% if @sale.closed == false  %>
-				<%= link_to 'Cerrar la venta', sales_close_path(:id => @sale.id), {:class => "btn btn-primary"} %>
+				<%= link_to 'Cerrar la venta', sales_close_path(:id => @sale.id, :total => total), {:class => "btn btn-primary"} %>
 
 				<% else %>
 				<td>

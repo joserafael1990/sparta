@@ -6,4 +6,6 @@ class Sale < ApplicationRecord
 	has_many :products, :through => :details
 
 	validates :bill_request, :presence => {:message => "Seleccione una opción en el campo: Solicitud de factura"}
+	ransack_alias :vendido_en, :created_at
+
 end

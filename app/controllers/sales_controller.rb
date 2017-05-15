@@ -23,6 +23,7 @@ class SalesController < ApplicationController
 			@dispatcher.save
 		end
 		@sale.closed = true
+		@sale.total = params[:total] 
 		@sale.save
 
 		redirect_to @sale
@@ -90,7 +91,7 @@ class SalesController < ApplicationController
 
 	protected
 	def sale_params
-		params.require(:sale).permit(:seller_id, :client_id, :closed, :bill_request, :rfc, :business_address, :business_name)
+		params.require(:sale).permit(:seller_id, :client_id, :closed, :bill_request, :rfc, :business_address, :business_name, :total, :observation)
 	end
 
 end

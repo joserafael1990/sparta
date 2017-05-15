@@ -10,9 +10,9 @@
 			<th>Cliente</th>
 			<th>Vendedor</th>
 			<th>Fecha</th>
-			<th>Status</th>
-			<th>Solicitud de factura</th>
-			<th colspan="2">Acciones</th>
+			<th>Obs</th>
+			<th>Factura</th>
+			<th>Total</th>
 			<% if current_user.privilege != 'seller' %>
 			<th colspan="2">Acciones</th>
 			<% end %>
@@ -24,14 +24,14 @@
 				<td><%= sale.client.name+' '+ sale.client.last_name%></td>
 				<td><%= sale.seller.name+' '+ sale.seller.last_name%></td>
 				<td><%= sale.created_at.in_time_zone("Mexico City") %></td>
-				<td>
-					<% if sale.closed == false %>
-					Abierta
-					<% else %>	
-					Cerrada
+				<td><% if sale.observation == nil %>
+					<%= "No" %> 
+					<% else %>
+					<%= "Si" %>
 					<% end %>
 				</td>
 				<td><%= sale.bill_request %></td>
+				<td><%= sale.total %></td>
 				<td><%= link_to raw('<span class="glyphicon glyphicon-eye-open fa-2x"></span>'), sale_path(sale) %></td>
 				<td><%= link_to raw('<span class="glyphicon glyphicon-edit fa-2x"></span>'), edit_sale_path(sale) %></td>
 				<td><%= link_to raw('<span class="glyphicon glyphicon-trash fa-2x"></span>'), sale_path(sale), method: :delete, data: { confirm: '¿Está seguro?'} %></td>

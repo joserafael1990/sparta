@@ -52,6 +52,12 @@
 					<%= f.select(:bill_request, ['No', 'Pendiente', 'Procesada'], {include_blank: "Seleccione"}, { :class => 'form-control' }) %>
 				</div>
 			</div>
+			<div class="form-group">
+				<%= f.label 'Observacion ', class: "col-sm-2 control-label", style: "text-align: left;"  %>
+				<div class="col-sm-8">
+					<%= f.text_area :observation, autofocus: true, class: "form-control", placeholder: 'Ingrese observaciones en caso de que apliquen'  %>
+				</div>
+			</div>
 
 			<h3>Datos de facturación</h3>
 			<div class="form-group">
