@@ -130,12 +130,14 @@
 				<% else %>
 				<% discount = 50 %>
 				<% end %>
-				<% @details.each do |detail|%>
-				<% if  detail.product.try(:max_discount) >= discount %>
-				<% total_discount = total_discount + ( detail.product.try(:price)*detail.quantity * detail.product.try(:max_discount) /100 ) %>
-				<% else %>
-				<% total_discount = total_discount + ( detail.product.try(:price)*detail.quantity * detail.product.try(:max_discount) /100 ) %>
-				<% end %>
+				<% if discount > 0 %> 
+					<% @details.each do |detail|%>
+						<% if  detail.product.try(:max_discount) >= discount  %>
+							<% total_discount = total_discount + ( detail.product.try(:price)*detail.quantity * detail.product.try(:max_discount) /100 ) %>
+						<% else %>
+							<% total_discount = total_discount + ( detail.product.try(:price)*detail.quantity * detail.product.try(:max_discount) /100 ) %>
+						<% end %>
+					<% end %>
 				<% end %>
 				<%= total_discount %>
 			</td>
