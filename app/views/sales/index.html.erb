@@ -21,7 +21,7 @@
 		<% @sales.each do |sale|%>
 			<% if current_user.privilege != 'seller' %>
 			<tr>
-				<% name =sale.client.(:name) %>
+				<% name =sale.client.name %>
 				<% last_name =sale.client.try(:last_name) %>
 				<td><%=  name %></td>
 				<td><%= sale.seller.name+' '+ sale.seller.last_name%></td>
