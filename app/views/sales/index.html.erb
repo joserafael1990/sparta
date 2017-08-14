@@ -7,8 +7,8 @@
 
 	<table style= "width: 100%;">
 		<tr>
-			<th>Nom del C</th>
-			<th>Ape del C</th>
+			<th>Nombre</th>
+			<th>Apellido</th>
 			<th>Vendedor</th>
 			<th>Fecha</th>
 			<th>Obs</th>
@@ -22,7 +22,7 @@
 		<% @sales.each do |sale|%>
 			<% if current_user.privilege != 'seller' %>
 			<tr>
-				<td><%=  sale.client.try(:name) %></td>
+				<td><%=  sale.client.try(:name) + ' ' + sale.client.try(:last_name) %></td>
 				<td><%=  sale.client.try(:last_name) %></td>
 				<td><%= sale.seller.name+' '+ sale.seller.last_name%></td>
 				<td><%= sale.created_at.in_time_zone("Mexico City") %></td>
