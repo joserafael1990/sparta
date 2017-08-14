@@ -21,7 +21,7 @@
 		<% @sales.each do |sale|%>
 			<% if current_user.privilege != 'seller' %>
 			<tr>
-				<td><%= sale.client.try(:name) %></td>
+				<td><%= sale.client.name+' '+ sale.client.last_name%></td>
 				<td><%= sale.seller.name+' '+ sale.seller.last_name%></td>
 				<td><%= sale.created_at.in_time_zone("Mexico City") %></td>
 				<td><% if sale.observation == nil %>
