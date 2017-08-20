@@ -41,7 +41,8 @@
 			<% else %>
 				<%if sale.seller_id == Person.where(:email => current_user.email).pluck(:id).first.to_i %>
 					<tr>
-						<td><%= sale.client.name+' '+ sale.client.last_name%></td>
+						<td><%=  sale.client.try(:name) %></td>
+						<td><%=  sale.client.try(:last_name) %></td>
 						<td><%= sale.seller.name+' '+ sale.seller.last_name%></td>
 						<td><%= sale.created_at.in_time_zone("Mexico City") %></td>
 						<td>
